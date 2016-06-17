@@ -19,9 +19,10 @@ using namespace std;
 /* Constants and functions declarations                                    */
 /***************************************************************************/
 // Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 720;
+const int SCREEN_HEIGHT = 560;
 float pos = 0;
+bool avancer = false;
 
 // Max number of forms : static allocation
 const int MAX_FORMS_NUMBER = 10;
@@ -161,17 +162,23 @@ const void render(Form* formlist[MAX_FORMS_NUMBER] ) //const Point &cam_pos
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity();
 
-    pos += 0.01;
+    if(avancer){
+        pos += 0.01;
+        gluLookAt(2*SIZE_PLAN_WIDTH,2,0, 0,2,SIZE_PLAN_LENGTH, 0.0,1.0,0.0);
+    }
+    else{
+        // Set the camera position and parameters
+        gluLookAt(2,2,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
+    }
 
-    // Set the camera position and parameters
-    gluLookAt(2,2,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
+
 
     // X, Y and Z axis
     glPushMatrix(); // Preserve the camera viewing point for further forms
 
     // Render the coordinates system
 
-    glTranslated(pos,pos,1);
+    glTranslated(0,1,0);
     glBegin(GL_LINES);
     {
         glColor3f(1.0f, 0.0f, 0.0f);
@@ -189,10 +196,6 @@ const void render(Form* formlist[MAX_FORMS_NUMBER] ) //const Point &cam_pos
 
     // Render a simple object
     glPushMatrix(); // Preserve the camera viewing point for further forms
-//    glRotated(45,1,1,1);
-//    glRotated(35,1,0,1);
-//    glScaled(0.5,0.5,0.5);
-//    glTranslated(0,2,4);
 
     // Render the list of forms
     unsigned short i = 0;
@@ -279,6 +282,11 @@ int main(int argc, char* args[])
                 case SDL_QUIT:
                     quit = true;
                     break;
+                case SDL_MOUSEBUTTONUP:
+                    avancer = true;
+                    break;
+
+
                 case SDL_KEYDOWN:
                     // Handle key pressed with current mouse position
                     SDL_GetMouseState( &x, &y );

@@ -3,6 +3,9 @@
 
 #include "boule.h"
 
+const int SIZE_PLAN_WIDTH = 3;
+const int SIZE_PLAN_LENGTH = 12;
+
 class Sol : public Form
 {
 

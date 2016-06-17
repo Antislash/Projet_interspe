@@ -12,13 +12,13 @@ void Sol::render(){
     {
         // 1er face
         glColor3f(1, 0, 0);
-        glVertex3i(5, 0, 5);
+        glVertex3i(SIZE_PLAN_WIDTH, 0, SIZE_PLAN_LENGTH);
         glColor3f(1, 0, 1);
-        glVertex3i(5, 0, -5);
+        glVertex3i(SIZE_PLAN_WIDTH, 0, -SIZE_PLAN_LENGTH);
         glColor3f(0, 0, 1);
-        glVertex3i(-5, 0, -5);
+        glVertex3i(-SIZE_PLAN_WIDTH, 0, -SIZE_PLAN_LENGTH);
         glColor3f(1, 0, 0);
-        glVertex3i(-5, 0, 5);
+        glVertex3i(-SIZE_PLAN_WIDTH, 0, SIZE_PLAN_LENGTH);
     }
     glEnd();
 

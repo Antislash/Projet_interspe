@@ -43,11 +43,11 @@
 			<Add library="glu32" />
 			<Add directory="./lib" />
 		</Linker>
-		<Unit filename="src/Astre.cpp" />
 		<Unit filename="src/Environnement.cpp" />
 		<Unit filename="src/animation.cpp" />
 		<Unit filename="src/animation.h" />
-		<Unit filename="src/astre.h" />
+		<Unit filename="src/boule.cpp" />
+		<Unit filename="src/boule.h" />
 		<Unit filename="src/environnement.h" />
 		<Unit filename="src/geometry.cpp" />
 		<Unit filename="src/geometry.h" />

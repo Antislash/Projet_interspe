@@ -365,17 +365,17 @@
 	<cmath>
 	"geometry.h"
 
-1466093377 source:c:\users\shiba\projet_interspe_2016\projet_interspe\src\premier_prog.cpp
+1466173282 source:c:\users\shiba\projet_interspe_2016\projet_interspe\src\premier_prog.cpp
 	<iostream>
 	<cmath>
 	<SDL2/SDL.h>
 	<SDL2/SDL_opengl.h>
 	<GL/GLU.h>
 	"geometry.h"
-	"astre.h"
+	"boule.h"
 	"environnement.h"
 
-1466093545 source:c:\users\shiba\projet_interspe_2016\projet_interspe\src\environnement.cpp
+1466171687 source:c:\users\shiba\projet_interspe_2016\projet_interspe\src\environnement.cpp
 	<cmath>
 	<SDL2/SDL_opengl.h>
 	<GL/GLU.h>
@@ -383,7 +383,7 @@
 	<SDL2/SDL_image.h>
 	"environnement.h"
 
-1466094072 c:\users\shiba\projet_interspe_2016\projet_interspe\src\environnement.h
+1466171776 c:\users\shiba\projet_interspe_2016\projet_interspe\src\environnement.h
 	"boule.h"
 
 1466094126 c:\users\shiba\projet_interspe_2016\projet_interspe\src\boule.h
