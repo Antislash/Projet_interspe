@@ -28,7 +28,6 @@ void Boule::render()
 
     glEnable(GL_TEXTURE_2D);
 
-    glEnable(GL_TEXTURE_2D);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     // Complete this part
     {
