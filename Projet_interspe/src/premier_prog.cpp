@@ -10,6 +10,8 @@
 // Module for generating and rendering forms
 #include "boule.h"
 #include "environnement.h"
+#include "OBJlib.h"
+#include "sdlglutils.h"
 
 
 using namespace std;
@@ -153,7 +155,7 @@ void update(Form* formlist[MAX_FORMS_NUMBER])
     }
 }
 
-const void render(Form* formlist[MAX_FORMS_NUMBER] ) //const Point &cam_pos
+const void render(Form* formlist[MAX_FORMS_NUMBER], MeshObj* ballonFoot) //const Point &cam_pos
 {
     // Clear color buffer and Z-Buffer
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
@@ -175,7 +177,6 @@ const void render(Form* formlist[MAX_FORMS_NUMBER] ) //const Point &cam_pos
 
     // X, Y and Z axis
     glPushMatrix(); // Preserve the camera viewing point for further forms
-
     // Render the coordinates system
 
     glTranslated(0,1,0);
@@ -196,6 +197,9 @@ const void render(Form* formlist[MAX_FORMS_NUMBER] ) //const Point &cam_pos
 
     // Render a simple object
     glPushMatrix(); // Preserve the camera viewing point for further forms
+    glTranslatef(0,0,0);
+    ballonFoot->draw_model();
+    glPopMatrix();
 
     // Render the list of forms
     unsigned short i = 0;
@@ -260,10 +264,12 @@ int main(int argc, char* args[])
         // Don't forget to update the actual number_of_forms !
 
         Boule soleil(Point(0,0,0),0.5);
-        Sol sol(Point(0,0,0), Color(0,1,1));
+        //Sol sol(Point(0,0,0), Color(0,1,1));
+        MeshObj *ballon=new MeshObj("models/untitled.obj");
+
 
         forms_list[0] = &soleil;
-        forms_list[1] = &sol;
+        //forms_list[1] = &sol;
 
         // Get first "current time"
         previous_time = SDL_GetTicks();
@@ -317,7 +323,7 @@ int main(int argc, char* args[])
             }
 
             // Render the scene
-            render(forms_list);
+            render(forms_list, ballon);
 
             // Update window screen
             SDL_GL_SwapWindow(gWindow);

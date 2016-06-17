@@ -407,7 +407,7 @@
 
 1466169348 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\geometry.h
 
-1466169348 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\environnement.cpp
+1466173751 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\environnement.cpp
 	<cmath>
 	<SDL2/SDL_opengl.h>
 	<GL/GLU.h>
@@ -756,7 +756,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1466169348 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\environnement.h
+1466173751 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\environnement.h
 	"boule.h"
 
 1466169348 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\boule.h
@@ -768,7 +768,6 @@
 	<cmath>
 	"geometry.h"
 
-1466169348 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\premier_prog.cpp
 	<iostream>
 	<cmath>
 	<SDL2/SDL.h>
@@ -777,12 +776,43 @@
 	"geometry.h"
 	"boule.h"
 	"environnement.h"
+	"OBJlib.h"
+	"sdlglutils.h"
 
-1466169348 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\boule.cpp
+1466169713 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\boule.cpp
 	<cmath>
 	<SDL2/SDL_opengl.h>
 	<GL/GLU.h>
 	<string.h>
 	<SDL2/SDL_image.h>
 	"boule.h"
+
+1294562032 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\objlib.cpp
+	<GL/gl.h>
+	<GL/glu.h>
+	"objlib.h"
+
+1466174599 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\objlib.h
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+	<vector>
+	<SDL2/SDL.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	"sdlglutils.h"
+
+1466174608 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\sdlglutils.h
+	<GL/gl.h>
+	<SDL2/SDL.h>
+
+1466176391 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\sdlglutils.cpp
+	"sdlglutils.h"
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_surface.h>
+	<GL/glu.h>
+	<cstring>
+	<cstdlib>
 

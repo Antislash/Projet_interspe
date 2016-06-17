@@ -1,6 +1,7 @@
 #include "sdlglutils.h"
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_surface.h>
 #include <GL/glu.h>
 
 #include <cstring>
@@ -44,7 +45,7 @@ GLuint loadTexture(const char * filename,bool useMipMap)
 
     gl_surface = SDL_ConvertSurface(picture_surface,&format,SDL_SWSURFACE);
 
-    gl_fliped_surface = flipSurface(gl_surface);
+    gl_fliped_surface = gl_surface;
 
     glGenTextures(1, &glID);
 
@@ -79,7 +80,7 @@ GLuint loadTexture(const char * filename,bool useMipMap)
     return glID;
 }
 
-int takeScreenshot(const char * filename)
+/*int takeScreenshot(const char * filename)
 {
     GLint viewport[4];
     Uint32 rmask, gmask, bmask, amask;
@@ -245,15 +246,15 @@ int XPMFromImage(const char * imagefile, const char * XPMfile)
     free(xpm_name);
 
     fprintf(xpm,"\t{\n");
-    fprintf(xpm,"\t\t/* width height num_colors chars_per_pixel */\n");
+    fprintf(xpm,"\t\t\n");
     w = ((image->w%8) == 0)?image32bits->w:8*(image32bits->w/8+1);
 
     fprintf(xpm,"\t\t\" %d %d 3 1 \",\n",w,image32bits->h);
-    fprintf(xpm,"\t\t/* colors */\n");
+    fprintf(xpm,"\t\t\n");
     fprintf(xpm,"\t\t\"X c #000000\",\n");
     fprintf(xpm,"\t\t\". c #ffffff\",\n");
     fprintf(xpm,"\t\t\"  c None\",\n");
-    fprintf(xpm,"\t\t/* pixels */\n");
+    fprintf(xpm,"\t\t\n");
 
     SDL_LockSurface(image32bits);
 
@@ -330,4 +331,4 @@ SDL_Cursor * cursorFromXPM(const char * xpm[])
     free(data);
     free(mask);
     return cursor;
-}
+}*/
