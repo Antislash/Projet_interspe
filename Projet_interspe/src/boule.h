@@ -4,6 +4,7 @@
 #include "geometry.h"
 #include "animation.h"
 #include <string.h>
+#include "OBJlib.h"
 
 class Color
 {
@@ -40,6 +41,7 @@ class Boule : public Form
 private:
     Point center;
     double radius;
+    MeshObj *ballon;
 public:
     Boule(Point c = Point(), double r = 1.0);
     const Point getCenter() {return center;}

@@ -2,6 +2,7 @@
 #define ENVIRONNEMENT_H_INCLUDED
 
 #include "boule.h"
+#include "OBJlib.h"
 
 const int SIZE_PLAN_WIDTH = 3;
 const int SIZE_PLAN_LENGTH = 12;
@@ -17,6 +18,33 @@ public:
     Sol(Point p = Point(), Color c = Color()){center= p; col =c;}
     const Point getCenter() {return center;}
     void setCenter(Point c) {center = c;}
+    void render();
+
+};
+
+class Fleche : public Form
+{
+
+private:
+    Point center;
+    MeshObj *fleche;
+
+public:
+    Fleche(Point p = Point());
+    const Point getCenter() {return center;}
+    void setCenter(Point c) {center = c;}
+    void render();
+
+};
+
+class Ciel : public Form
+{
+
+private:
+    Point center;
+
+public:
+    Ciel(Point p = Point());
     void render();
 
 };

@@ -13,35 +13,17 @@ Boule::Boule(Point c, double r)
 {
     center = c;
     radius = r;
+    ballon=new MeshObj("models/untitled.obj");
 //    text = texture;
 }
 
 
 void Boule::render()
 {
-    GLUquadric *quad;
 
-    quad = gluNewQuadric();
-    glTranslated(center.x,center.y,center.z);
+    glTranslatef(0,0,0);
+    glScaled(0.5,0.5,0.5);
+    ballon->draw_model();
 
-    gluQuadricTexture(quad,GL_TRUE);
 
-    glEnable(GL_TEXTURE_2D);
-
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    // Complete this part
-    {
-//        glColor3f(col.r,col.g,col.b);
-        gluSphere(quad,radius,50,50);
-    }
-    glDisable(GL_TEXTURE_2D);
-    gluDeleteQuadric(quad);
-}
-
-SDL_Surface *loadImage(){
-    SDL_Surface * loadedImage = NULL;
-    SDL_Surface* zoomedImage = NULL;
-    SDL_Surface* optimizedImage = NULL;
-
-    loadedImage = IMG_Load("sun.png");
 }

@@ -6,6 +6,9 @@
 
 #include <cstring>
 #include <cstdlib>
+#include<iostream>
+
+using namespace std;
 
 SDL_Surface * flipSurface(SDL_Surface * surface);
 
@@ -19,7 +22,11 @@ GLuint loadTexture(const char * filename,bool useMipMap)
 
     picture_surface = IMG_Load(filename);
     if (picture_surface == NULL)
+    {
+        cout << "ca ne trouve pas le fichier" << endl;
         return 0;
+    }
+
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
 
@@ -45,7 +52,7 @@ GLuint loadTexture(const char * filename,bool useMipMap)
 
     gl_surface = SDL_ConvertSurface(picture_surface,&format,SDL_SWSURFACE);
 
-    gl_fliped_surface = gl_surface;
+    gl_fliped_surface = flipSurface(gl_surface);
 
     glGenTextures(1, &glID);
 
@@ -120,7 +127,7 @@ GLuint loadTexture(const char * filename,bool useMipMap)
 
     return 0;
 }
-
+*/
 SDL_Surface * flipSurface(SDL_Surface * surface)
 {
     int current_line,pitch;
@@ -150,7 +157,7 @@ SDL_Surface * flipSurface(SDL_Surface * surface)
     SDL_UnlockSurface(surface);
     return fliped_surface;
 }
-
+/*
 void drawAxis(double scale)
 {
     glPushAttrib(GL_ALL_ATTRIB_BITS);

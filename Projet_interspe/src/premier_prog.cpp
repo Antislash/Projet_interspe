@@ -12,6 +12,7 @@
 #include "environnement.h"
 #include "OBJlib.h"
 #include "sdlglutils.h"
+//#include "skybox.h"
 
 
 using namespace std;
@@ -155,7 +156,7 @@ void update(Form* formlist[MAX_FORMS_NUMBER])
     }
 }
 
-const void render(Form* formlist[MAX_FORMS_NUMBER], MeshObj* ballonFoot) //const Point &cam_pos
+const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
 {
     // Clear color buffer and Z-Buffer
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
@@ -165,12 +166,13 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], MeshObj* ballonFoot) //const
     glLoadIdentity();
 
     if(avancer){
-        pos += 0.01;
-        gluLookAt(2*SIZE_PLAN_WIDTH,2,0, 0,2,SIZE_PLAN_LENGTH, 0.0,1.0,0.0);
+//        pos += 0.01;
+//        gluLookAt(2*SIZE_PLAN_WIDTH,2,0, 0,2,SIZE_PLAN_LENGTH, 0.0,1.0,0.0);
+        gluLookAt(-2,-4,-10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
     }
     else{
         // Set the camera position and parameters
-        gluLookAt(2,2,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
+        gluLookAt(2,4,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
     }
 
 
@@ -196,10 +198,11 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], MeshObj* ballonFoot) //const
     glPopMatrix();
 
     // Render a simple object
-    glPushMatrix(); // Preserve the camera viewing point for further forms
-    glTranslatef(0,0,0);
-    ballonFoot->draw_model();
-    glPopMatrix();
+//    glPushMatrix(); // Preserve the camera viewing point for further forms
+//    glScaled(2,2,2);
+//    glTranslated(0,0,3);
+//    ballonFoot->draw_model();
+//    glPopMatrix();
 
     // Render the list of forms
     unsigned short i = 0;
@@ -263,13 +266,17 @@ int main(int argc, char* args[])
         // Create here specific forms and add them to the list...
         // Don't forget to update the actual number_of_forms !
 
-        Boule soleil(Point(0,0,0),0.5);
+        Boule ballon(Point(0,0,0),0.5);
+        Fleche fleche(Point(0,0,0));
+        Ciel ciel(Point(0,0,0));
         //Sol sol(Point(0,0,0), Color(0,1,1));
-        MeshObj *ballon=new MeshObj("models/untitled.obj");
+        //MeshObj *fleche=new MeshObj("models/arrow/arrow.obj");
 
 
-        forms_list[0] = &soleil;
-        //forms_list[1] = &sol;
+        forms_list[0] = &ballon;
+        forms_list[1] = &fleche;
+        forms_list[2] = &ciel;
+
 
         // Get first "current time"
         previous_time = SDL_GetTicks();
@@ -323,7 +330,7 @@ int main(int argc, char* args[])
             }
 
             // Render the scene
-            render(forms_list, ballon);
+            render(forms_list);
 
             // Update window screen
             SDL_GL_SwapWindow(gWindow);
