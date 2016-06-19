@@ -175,7 +175,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
         // Set the camera position and parameters
         //gluLookAt(2,4,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
         //Placement, eye, up
-        gluLookAt(-35,0,-30, 0,1,10, 0.0,1.0,0.0);
+        gluLookAt(0,20,0, 0,0,0, 0.0,1.0,0.0);
     }
 
 
@@ -271,7 +271,7 @@ int main(int argc, char* args[])
 
         Boule ballon(Point(0,0,0),0.5);
         Fleche fleche(Point(0,0,0));
-        Ciel ciel(Point(0,0,0));
+        Ciel ciel(Point (0,0,0));
         //Sol sol(Point(0,0,0), Color(0,1,1));
         //MeshObj *fleche=new MeshObj("models/arrow/arrow.obj");
 

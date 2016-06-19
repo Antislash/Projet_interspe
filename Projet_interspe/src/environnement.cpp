@@ -57,7 +57,7 @@ void Ciel::render(){
     glBindTexture(GL_TEXTURE_2D, texture1);
     glColor3f(1,1,1);
     glBegin(GL_QUADS);
- glTexCoord2d(0,1);
+        glTexCoord2d(0,1);
         glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,DISTANCE_SKYBOX);
         glTexCoord2d(0,0);
         glVertex3d(-DISTANCE_SKYBOX,DISTANCE_SKYBOX,DISTANCE_SKYBOX);
@@ -67,11 +67,11 @@ void Ciel::render(){
         glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
     glEnd();
 
-        //Face pour le haut
+    //Face pour le bas
     glBindTexture(GL_TEXTURE_2D, texture6);
     glColor3f(1,1,1);
     glBegin(GL_QUADS);
- glTexCoord2d(0,1);
+        glTexCoord2d(0,1);
         glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,DISTANCE_SKYBOX);
         glTexCoord2d(0,0);
         glVertex3d(-DISTANCE_SKYBOX,-DISTANCE_SKYBOX,DISTANCE_SKYBOX);
@@ -83,7 +83,7 @@ void Ciel::render(){
 
     //Face pour le devant
     glBindTexture(GL_TEXTURE_2D, texture5);
-    glBegin(GL_QUADS);
+        glBegin(GL_QUADS);
         glTexCoord2d(0,1);
         glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
         glTexCoord2d(0,0);
@@ -96,7 +96,7 @@ void Ciel::render(){
 
     //Face de gauche
     glBindTexture(GL_TEXTURE_2D, texture5);
-    glBegin(GL_QUADS);
+        glBegin(GL_QUADS);
         glTexCoord2d(1,1);
         glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,DISTANCE_SKYBOX);
         glTexCoord2d(0,1);
@@ -109,7 +109,7 @@ void Ciel::render(){
 
     //Face de droite
     glBindTexture(GL_TEXTURE_2D, texture2);
-    glBegin(GL_QUADS);
+        glBegin(GL_QUADS);
         glTexCoord2d(1,1);
         glVertex3d(-DISTANCE_SKYBOX,DISTANCE_SKYBOX,DISTANCE_SKYBOX);
         glTexCoord2d(0,1);
@@ -122,7 +122,7 @@ void Ciel::render(){
 
     //Face de derrière
     glBindTexture(GL_TEXTURE_2D, texture5);
-    glBegin(GL_QUADS);
+        glBegin(GL_QUADS);
         glTexCoord2d(0,1);
         glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,DISTANCE_SKYBOX);
         glTexCoord2d(0,0);
@@ -135,4 +135,5 @@ void Ciel::render(){
 
 
     glDisable(GL_TEXTURE_2D);
+    glDisable(GL_DEPTH_TEST);
 }
