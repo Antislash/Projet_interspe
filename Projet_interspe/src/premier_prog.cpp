@@ -171,8 +171,11 @@ const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
         gluLookAt(-2,-4,-10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
     }
     else{
+            pos += 0.5;
         // Set the camera position and parameters
-        gluLookAt(2,4,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
+        //gluLookAt(2,4,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
+        //Placement, eye, up
+        gluLookAt(-35,0,-30, 0,1,10, 0.0,1.0,0.0);
     }
 
 

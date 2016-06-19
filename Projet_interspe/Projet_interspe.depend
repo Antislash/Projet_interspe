@@ -1178,7 +1178,7 @@
 	<string.h>
 	"OBJlib.h"
 
-1466278613 source:e:\projet_interspe\projet_interspe\src\environnement.cpp
+1466296861 source:e:\projet_interspe\projet_interspe\src\environnement.cpp
 	<cmath>
 	<SDL2/SDL_opengl.h>
 	<GL/GLU.h>
@@ -1186,8 +1186,10 @@
 	<SDL2/SDL.h>
 	"environnement.h"
 	"sdlglutils.h"
+	<fstream>
+	<iostream>
 
-1466274773 e:\projet_interspe\projet_interspe\src\environnement.h
+1466293784 e:\projet_interspe\projet_interspe\src\environnement.h
 	"boule.h"
 	"OBJlib.h"
 
@@ -1215,7 +1217,7 @@
 	<GL/gl.h>
 	<SDL2/SDL.h>
 
-1466276908 source:e:\projet_interspe\projet_interspe\src\premier_prog.cpp
+1466294092 source:e:\projet_interspe\projet_interspe\src\premier_prog.cpp
 	<iostream>
 	<cmath>
 	<SDL2/SDL.h>

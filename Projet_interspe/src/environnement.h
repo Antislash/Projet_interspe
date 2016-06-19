@@ -6,6 +6,7 @@
 
 const int SIZE_PLAN_WIDTH = 3;
 const int SIZE_PLAN_LENGTH = 12;
+const int DISTANCE_SKYBOX = 40;
 
 class Sol : public Form
 {
