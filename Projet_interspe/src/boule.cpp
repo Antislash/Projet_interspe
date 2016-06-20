@@ -28,6 +28,7 @@ void Boule::render()
 
     GLUquadricObj *quadric = gluNewQuadric();
     glColor3f(1,1,1);
+    glTranslatef(center.x,center.y,center.z);
     gluQuadricTexture(quadric, GL_TRUE);
 
     glBindTexture(GL_TEXTURE_2D, loadTexture("models/Ball_15.jpg" ));

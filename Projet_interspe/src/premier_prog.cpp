@@ -176,7 +176,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
         // Set the camera position and parameters
         //gluLookAt(2,4,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
         //Placement, eye, up
-        gluLookAt(0,0,-5, cameraLookX,cameraLookY,0, 0.0,1.0,0.0);
+        gluLookAt(0,-DISTANCE_SKYBOX/2 + 1,-DISTANCE_SKYBOX/2 + 2, cameraLookX,-DISTANCE_SKYBOX/2 + cameraLookY+1, -DISTANCE_SKYBOX/2 + 7, 0.0,1.0,0.0);
     }
 
 
@@ -270,7 +270,7 @@ int main(int argc, char* args[])
         // Create here specific forms and add them to the list...
         // Don't forget to update the actual number_of_forms !
 
-        Boule ballon(Point(0,0,0),0.5);
+        Boule ballon(Point(0,-DISTANCE_SKYBOX/2,-DISTANCE_SKYBOX/2 + 7),0.5);
         Fleche fleche(Point(0,0,0));
         Ciel ciel(Point (0,0,0));
         //Sol terrain(Point(0,-1,0));
