@@ -26,7 +26,7 @@ Vector Animation::integration_vit(Vector vitesse, Vector position_ini)
     int time; // 10 ms ?
     position.x = position_ini.x - vitesse*time;
     position.y = position_ini.y - vitesse*time;
-    position.z = position_ini.y - vitesse*time;
+    position.z = position_ini.z - vitesse*time;
     return position;
 
 }
