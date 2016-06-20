@@ -399,21 +399,24 @@
 	<SDL2/SDL_image.h>
 	"boule.h"
 
-1466169348 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\animation.cpp
+1466426855 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\animation.cpp
 	"animation.h"
 
-1466169348 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\animation.h
+1466426855 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\animation.h
 	"geometry.h"
 
 1466169348 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\geometry.h
 
-1466173751 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\environnement.cpp
+1466428085 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\environnement.cpp
 	<cmath>
 	<SDL2/SDL_opengl.h>
 	<GL/GLU.h>
 	<string.h>
-	<SDL2/SDL_image.h>
+	<SDL2/SDL.h>
 	"environnement.h"
+	"sdlglutils.h"
+	<fstream>
+	<iostream>
 
 1466169348 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\include\sdl2\sdl_opengl.h
 	"SDL_config.h"
@@ -756,13 +759,15 @@
 	"begin_code.h"
 	"close_code.h"
 
-1466173751 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\environnement.h
+1466426855 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\environnement.h
 	"boule.h"
+	"OBJlib.h"
 
-1466169348 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\boule.h
+1466426855 c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\boule.h
 	"geometry.h"
 	"animation.h"
 	<string.h>
+	"OBJlib.h"
 
 1466169348 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\geometry.cpp
 	<cmath>
@@ -778,7 +783,7 @@
 	"OBJlib.h"
 	"sdlglutils.h"
 
-1466169713 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\boule.cpp
+1466427630 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\boule.cpp
 	<cmath>
 	<SDL2/SDL_opengl.h>
 	<GL/GLU.h>
@@ -806,7 +811,7 @@
 	<GL/gl.h>
 	<SDL2/SDL.h>
 
-1466176391 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\sdlglutils.cpp
+1466426855 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\sdlglutils.cpp
 	"sdlglutils.h"
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
@@ -814,6 +819,7 @@
 	<GL/glu.h>
 	<cstring>
 	<cstdlib>
+	<iostream>
 
 1466250700 source:e:\projet_interspe\projet_interspe\src\animation.cpp
 	"animation.h"
@@ -1244,4 +1250,16 @@
 
 1466274484 e:\projet_interspe\projet_interspe\src\skybox.h
 	"boule.h"
+
+1466428658 source:c:\users\maxime dufour\documents\github\projet_interspe\projet_interspe\src\premier_prog.cpp
+	<iostream>
+	<cmath>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+	<GL/GLU.h>
+	"geometry.h"
+	"boule.h"
+	"environnement.h"
+	"OBJlib.h"
+	"sdlglutils.h"
 

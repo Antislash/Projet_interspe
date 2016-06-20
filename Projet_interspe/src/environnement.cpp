@@ -34,7 +34,7 @@ Fleche::Fleche(Point p){
 
 void Fleche::render(){
     glScaled(2,2,2);
-    glTranslated(0,0,3);
+    glTranslated(center.x,center.y,center.z);
     fleche->draw_model();
 }
 
@@ -135,5 +135,5 @@ void Ciel::render(){
 
 
     glDisable(GL_TEXTURE_2D);
-    glDisable(GL_DEPTH_TEST);
+    //glDisable(GL_DEPTH_TEST);
 }

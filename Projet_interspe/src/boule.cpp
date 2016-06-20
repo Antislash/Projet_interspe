@@ -21,9 +21,8 @@ Boule::Boule(Point c, double r)
 void Boule::render()
 {
 
-    glTranslatef(0,0,0);
+    glTranslatef(center.x,center.y,center.z);
     glScaled(0.5,0.5,0.5);
     ballon->draw_model();
-
 
 }
