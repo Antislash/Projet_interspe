@@ -53,5 +53,14 @@ public:
 
 };
 
+class Cible : public Form
+{
+private:
+    float taille;
+    Point center;
 
+public:
+    Cible(Point p = Point(), float t = 1.00){center = p; taille = t;}
+    void render();
+};
 #endif // ENVIRONNEMENT_H_INCLUDED

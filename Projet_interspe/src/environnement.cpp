@@ -149,3 +149,26 @@ void Ciel::render(){
     glDisable(GL_TEXTURE_2D);
     //glDisable(GL_DEPTH_TEST);
 }
+
+void Cible::render(){
+
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_TEXTURE_2D);
+
+//    Face pour le haut
+    glBindTexture(GL_TEXTURE_2D, loadTexture("models/cible.jpg"));
+    glColor3f(1,1,1);
+    glTranslated(center.x,center.y,center.z);
+    glBegin(GL_QUADS);
+        glTexCoord2d(1,1);
+        glVertex3d(-taille,taille,taille);
+        glTexCoord2d(0,1);
+        glVertex3d(taille,taille,taille);
+        glTexCoord2d(0,0);
+        glVertex3d(taille,-taille,taille);
+        glTexCoord2d(1,0);
+        glVertex3d(-taille,-taille,taille);
+    glEnd();
+
+    glDisable(GL_TEXTURE_2D);
+}

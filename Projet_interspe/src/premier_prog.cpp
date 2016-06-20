@@ -184,7 +184,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
     if(avancer){
 //        pos += 0.01;
 //        gluLookAt(2*SIZE_PLAN_WIDTH,2,0, 0,2,SIZE_PLAN_LENGTH, 0.0,1.0,0.0);
-        gluLookAt(-2,-4,-10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
+        gluLookAt(0,-DISTANCE_SKYBOX/2 + 1,-DISTANCE_SKYBOX/2 + 2, 0.0,-30.0,-5.0, 0.0,1.0,0.0);
     }
     else{
             pos += 0.5;
@@ -215,13 +215,6 @@ const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
     }
     glEnd();
     glPopMatrix();
-
-    // Render a simple object
-//    glPushMatrix(); // Preserve the camera viewing point for further forms
-//    glScaled(2,2,2);
-//    glTranslated(0,0,3);
-//    ballonFoot->draw_model();
-//    glPopMatrix();
 
     // Render the list of forms
     unsigned short i = 0;
@@ -288,14 +281,15 @@ int main(int argc, char* args[])
         Boule ballon(Point(0,-DISTANCE_SKYBOX/2,-DISTANCE_SKYBOX/2 + 7),0.5);
         Fleche fleche(Point(0,-DISTANCE_SKYBOX/2,-DISTANCE_SKYBOX/2 + 7));
         Ciel ciel(Point (0,0,0));
+        Cible cible(Point(1,-DISTANCE_SKYBOX+4,DISTANCE_SKYBOX/2 -7),4);
         //Sol terrain(Point(0,-1,0));
         //MeshObj *fleche=new MeshObj("models/arrow/arrow.obj");
 
 
         forms_list[0] = &ballon;
         forms_list[1] = &fleche;
-        forms_list[2] = &ciel;
-        //forms_list[3] = &terrain;
+        forms_list[2] = &cible;
+        forms_list[3] = &ciel;
 
 
         // Get first "current time"
