@@ -9,26 +9,25 @@ void Animation::update()
 
 //____________________________ Moez
 
-Vector Animation::integration_acc(Vector acceleration, Vector vitesse_ini)
+Vector Animation::integration_acc(Vector acceleration, Vector vitesse_ini, Vector vitesse)
 {
-    Vector vitesse;
-    int time; // 10 ms ?
-    vitesse.x += vitesse_ini.x - acceleration*time;
-    vitesse.y += vitesse_ini.y - acceleration*time;
-    vitesse.z += vitesse_ini.z - acceleration*time;
+    int dt; // 10 ms ?
+    vitesse.x += acceleration.x*dt;
+    vitesse.y += acceleration.y*dt;
+    vitesse.z += acceleration.z*dt;
     return vitesse;
-    
+
 }
 
-Vector Animation::integration_vit(Vector vitesse, Vector position_ini)
+Vector Animation::integration_vit(Vector vitesse, Vector position_ini, Vector acceleration, Vector position)
 {
-    Vector position;
-    int time; // 10 ms ?
-    position.x = position_ini.x - vitesse*time;
-    position.y = position_ini.y - vitesse*time;
-    position.z = position_ini.z - vitesse*time;
+    int dt; // 10 ms ?
+    position.x += vitesse.x*dt+(1/2)*acceleration.x*dt;
+    position.y += vitesse.y*dt+(1/2)*acceleration.y*dt;
+    position.z += vitesse.z*dt+(1/2)*acceleration.z*dt;
     return position;
 
 }
+
 
 //____________________________ Moez

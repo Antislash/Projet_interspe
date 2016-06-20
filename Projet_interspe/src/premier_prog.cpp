@@ -153,6 +153,7 @@ bool initGL()
 
 void update(Form* formlist[MAX_FORMS_NUMBER])
 {
+<<<<<<< Updated upstream
     // Update the list of forms
     /*unsigned short i = 0;
     while(formlist[i] != NULL)
@@ -160,6 +161,15 @@ void update(Form* formlist[MAX_FORMS_NUMBER])
         formlist[i]->updateForm(double angle, Vector direction, Vector translation);
         i++;
     }*/
+=======
+//    // Update the list of forms
+//    unsigned short i = 0;
+//    while(formlist[i] != NULL)
+//    {
+//        formlist[i]->getAnim().update();
+//        i++;
+//    }
+>>>>>>> Stashed changes
 }
 
 const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
