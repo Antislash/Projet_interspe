@@ -273,13 +273,14 @@ int main(int argc, char* args[])
         Boule ballon(Point(0,0,0),0.5);
         Fleche fleche(Point(0,0,0));
         Ciel ciel(Point (0,0,0));
-        //Sol sol(Point(0,0,0), Color(0,1,1));
+        //Sol terrain(Point(0,-1,0));
         //MeshObj *fleche=new MeshObj("models/arrow/arrow.obj");
 
 
         forms_list[0] = &ballon;
         forms_list[1] = &fleche;
         forms_list[2] = &ciel;
+        //forms_list[3] = &terrain;
 
 
         // Get first "current time"
