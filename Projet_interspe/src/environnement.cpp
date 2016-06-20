@@ -11,20 +11,16 @@
 using namespace std;
 
 void Sol::render(){
-    glBegin(GL_QUADS);
-    {
-        // 1er face
-        glColor3f(1, 0, 0);
-        glVertex3i(SIZE_PLAN_WIDTH, 0, SIZE_PLAN_LENGTH);
-        glColor3f(1, 0, 1);
-        glVertex3i(SIZE_PLAN_WIDTH, 0, -SIZE_PLAN_LENGTH);
-        glColor3f(0, 0, 1);
-        glVertex3i(-SIZE_PLAN_WIDTH, 0, -SIZE_PLAN_LENGTH);
-        glColor3f(1, 0, 0);
-        glVertex3i(-SIZE_PLAN_WIDTH, 0, SIZE_PLAN_LENGTH);
-    }
-    glEnd();
 
+    glTranslatef(center.x,center.y,center.z);
+    glScaled(1,1,1);
+    terrain->draw_model();
+}
+
+Sol::Sol(Point p){
+
+    center = p;
+    terrain = new MeshObj("models/mount.blend1.obj");
 }
 
 Fleche::Fleche(Point p){

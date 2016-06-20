@@ -13,10 +13,10 @@ class Sol : public Form
 
 private:
     Point center;
-    Color col;
+    MeshObj *terrain;
 
 public:
-    Sol(Point p = Point(), Color c = Color()){center= p; col =c;}
+    Sol(Point p = Point());
     const Point getCenter() {return center;}
     void setCenter(Point c) {center = c;}
     void render();
