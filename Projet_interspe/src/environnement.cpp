@@ -28,6 +28,14 @@ Fleche::Fleche(Point p){
     center = p;
 }
 
+void Fleche::updateForm(double angle, Vector direction, Vector translation){
+
+    glPushMatrix();
+    glRotated(angle, direction.x, direction.y, direction.z);
+    glTranslated(translation.x, translation.y, translation.z);
+    glPopMatrix();
+}
+
 void Fleche::render(){
     glScaled(2,2,2);
     glTranslated(center.x,center.y,center.z);
@@ -35,6 +43,14 @@ void Fleche::render(){
 }
 
 Ciel::Ciel(Point p){
+}
+
+void Ciel::updateForm(double angle, Vector direction, Vector translation) {
+
+    glPushMatrix();
+    glRotated(angle, direction.x, direction.y, direction.z);
+    glTranslated(translation.x, translation.y, translation.z);
+    glPopMatrix();
 }
 
 void Ciel::render(){

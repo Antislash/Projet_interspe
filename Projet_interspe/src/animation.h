@@ -16,10 +16,9 @@ public:
     void setAngle(double agl) {angle = agl;}
     const Vector getRotVect() {return rot_vect;}
     void setRotVect(Vector vect) {rot_vect = vect;}
-    void update();
 
 
-    // Moez 
+    // Moez
     Vector integration_acc(Vector acc, Vector vit_ini);
     Vector integration_vit(Vector vit, Vector pos_ini);
 

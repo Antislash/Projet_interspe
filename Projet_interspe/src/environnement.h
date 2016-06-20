@@ -20,6 +20,7 @@ public:
     const Point getCenter() {return center;}
     void setCenter(Point c) {center = c;}
     void render();
+    void updateForm();
 
 };
 
@@ -35,6 +36,7 @@ public:
     const Point getCenter() {return center;}
     void setCenter(Point c) {center = c;}
     void render();
+    void updateForm(double angle, Vector direction, Vector translation);
 
 };
 
@@ -47,6 +49,7 @@ private:
 public:
     Ciel(Point p = Point());
     void render();
+    void updateForm(double angle, Vector direction, Vector translation);
 
 };
 

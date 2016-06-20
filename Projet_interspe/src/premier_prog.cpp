@@ -44,11 +44,16 @@ void update(Form* formlist[MAX_FORMS_NUMBER]);
 // Renders scene to the screen
 const void render(Form* formlist[MAX_FORMS_NUMBER], const Point &cam_pos);
 
+const double ANGLE = 45.0;
+
 // Frees media and shuts down SDL
 void close(SDL_Window** window);
 
 double cameraLookY = 0;
 double cameraLookX = 0;
+double directionX = 0;
+double directionY = 0;
+double directionZ = 0;
 
 
 /***************************************************************************/
@@ -149,12 +154,12 @@ bool initGL()
 void update(Form* formlist[MAX_FORMS_NUMBER])
 {
     // Update the list of forms
-    unsigned short i = 0;
+    /*unsigned short i = 0;
     while(formlist[i] != NULL)
     {
-        formlist[i]->getAnim().update();
+        formlist[i]->updateForm(double angle, Vector direction, Vector translation);
         i++;
-    }
+    }*/
 }
 
 const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
@@ -271,7 +276,7 @@ int main(int argc, char* args[])
         // Don't forget to update the actual number_of_forms !
 
         Boule ballon(Point(0,-DISTANCE_SKYBOX/2,-DISTANCE_SKYBOX/2 + 7),0.5);
-        Fleche fleche(Point(0,0,0));
+        Fleche fleche(Point(0,-DISTANCE_SKYBOX/2,-DISTANCE_SKYBOX/2 + 7));
         Ciel ciel(Point (0,0,0));
         //Sol terrain(Point(0,-1,0));
         //MeshObj *fleche=new MeshObj("models/arrow/arrow.obj");
@@ -311,22 +316,33 @@ int main(int argc, char* args[])
 
                     switch(key_pressed)
                     {
-                        // Quit the program when 'q' or Escape keys are pressed
-                        case SDLK_q:
+                        // Quit the program when Escape key is pressed
                         case SDLK_ESCAPE:
                             quit = true;
                             break;
                         case SDLK_UP:
-                            cameraLookY += 0.1;
+                            cameraLookY += 0.2;
                             break;
                         case SDLK_DOWN:
-                            cameraLookY -= 0.1;
+                            cameraLookY -= 0.2;
                             break;
                         case SDLK_RIGHT:
-                            cameraLookX -= 0.1;
+                            cameraLookX -= 0.2;
                             break;
                         case SDLK_LEFT:
-                            cameraLookX += 0.1;
+                            cameraLookX += 0.2;
+                            break;
+                        case SDLK_q:
+                            forms_list[0]->updateForm(ANGLE, Vector(1.0,0.0,0.0), Vector(2.0,0.0,0.0));
+                            break;
+                        case SDLK_d:
+                            forms_list[0]->updateForm(-ANGLE, Vector(1.0,0.0,0.0), Vector(-2.0,0.0,0.0));
+                            break;
+                        case SDLK_z:
+                            forms_list[0]->updateForm(ANGLE, Vector(0.0,1.0,0.0), Vector(0.0,2.0,0.0));
+                            break;
+                        case SDLK_s:
+                            forms_list[0]->updateForm(-ANGLE, Vector(0.0,1.0,0.0), Vector(0.0,-2.0,0.0));
                             break;
 
                         default:

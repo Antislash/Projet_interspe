@@ -4,7 +4,7 @@
 #include <string.h>
 #include <SDL2/SDL_image.h>
 #include "boule.h"
-
+#include <iostream>
 
 using namespace std;
 
@@ -16,6 +16,12 @@ Boule::Boule(Point c, double r)
     ballon=new MeshObj("models/untitled.obj");
 }
 
+void Boule::updateForm(double angle, Vector direction, Vector translation) {
+
+    center.x += translation.x;
+    center.y += translation.y;
+    center.z += translation.z;
+}
 
 void Boule::render()
 {
@@ -25,7 +31,6 @@ void Boule::render()
 //    ballon->draw_model();
 
     glEnable(GL_TEXTURE_2D);
-
     GLUquadricObj *quadric = gluNewQuadric();
     glColor3f(1,1,1);
     glTranslatef(center.x,center.y,center.z);

@@ -32,6 +32,7 @@ public:
     void setAnim(Animation ani) {anim = ani;}
     // Virtual method : Form is a generic type, no rendering is possible
     virtual void render() = 0;
+    virtual void updateForm(double angle, Vector direction, Vector translation) = 0;
 };
 
 
@@ -47,6 +48,7 @@ public:
     const Point getCenter() {return center;}
     void setCenter(Point c) {center = c;}
     void render();
+    void updateForm(double angle, Vector direction, Vector translation);
 };
 
 
