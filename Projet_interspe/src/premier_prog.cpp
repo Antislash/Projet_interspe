@@ -48,7 +48,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], const Point &cam_pos);
 void close(SDL_Window** window);
 
 double cameraLookY = 0;
-double cameraLookZ = 0;
+double cameraLookX = 0;
 
 
 /***************************************************************************/
@@ -176,7 +176,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
         // Set the camera position and parameters
         //gluLookAt(2,4,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
         //Placement, eye, up
-        gluLookAt(-5,0,0, 0,cameraLookY,cameraLookZ, 0.0,1.0,0.0);
+        gluLookAt(0,0,-5, cameraLookX,cameraLookY,0, 0.0,1.0,0.0);
     }
 
 
@@ -322,10 +322,10 @@ int main(int argc, char* args[])
                             cameraLookY -= 0.1;
                             break;
                         case SDLK_RIGHT:
-                            cameraLookZ += 0.1;
+                            cameraLookX -= 0.1;
                             break;
                         case SDLK_LEFT:
-                            cameraLookZ -= 0.1;
+                            cameraLookX += 0.1;
                             break;
 
                         default:
