@@ -16,11 +16,8 @@ Boule::Boule(Point c, double r)
     ballon=new MeshObj("models/untitled.obj");
 }
 
-void Boule::updateForm(double angle, Vector direction, Vector translation) {
+void Boule::updateForm(double delta_t) {
 
-    center.x += translation.x;
-    center.y += translation.y;
-    center.z += translation.z;
 }
 
 void Boule::render()

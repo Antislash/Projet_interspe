@@ -1,8 +1,8 @@
 #ifndef ENVIRONNEMENT_H_INCLUDED
 #define ENVIRONNEMENT_H_INCLUDED
 
-#include "boule.h"
 #include "OBJlib.h"
+#include "forms.h"
 
 const int SIZE_PLAN_WIDTH = 3;
 const int SIZE_PLAN_LENGTH = 12;
@@ -20,7 +20,7 @@ public:
     const Point getCenter() {return center;}
     void setCenter(Point c) {center = c;}
     void render();
-    void updateForm();
+    void updateForm(double delta_t);
 
 };
 
@@ -36,7 +36,7 @@ public:
     const Point getCenter() {return center;}
     void setCenter(Point c) {center = c;}
     void render();
-    void updateForm(double angle, Vector direction, Vector translation);
+    void updateForm(double delta_t);
 
 };
 
@@ -49,7 +49,7 @@ private:
 public:
     Ciel(Point p = Point());
     void render();
-    void updateForm(double angle, Vector direction, Vector translation);
+    void updateForm(double delta_t);
 
 };
 
@@ -62,6 +62,6 @@ private:
 public:
     Cible(Point p = Point(), float t = 1.00){center = p; taille = t;}
     void render();
-    void updateForm(double angle, Vector direction, Vector translation);
+    void updateForm(double delta_t);
 };
 #endif // ENVIRONNEMENT_H_INCLUDED

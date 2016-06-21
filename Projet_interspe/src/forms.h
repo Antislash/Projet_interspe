@@ -31,20 +31,7 @@ public:
     void setAnim(Animation ani) {anim = ani;}
     // Virtual method : Form is a generic type, no rendering is possible
     virtual void render() = 0;
+    // Pure virtual to ensure all objects have their physics implemented
+    virtual void updateForm(double delta_t) = 0;
 };
-
-
-// A particular Form
-class Sphere : public Form
-{
-private:
-    Point center;
-    double radius;
-public:
-    Sphere(Point c = Point(), double r = 1.0, Color cl = Color());
-    const Point getCenter() {return center;}
-    void setCenter(Point c) {center = c;}
-    void render();
-};
-
 #endif // FORMS_H_INCLUDED

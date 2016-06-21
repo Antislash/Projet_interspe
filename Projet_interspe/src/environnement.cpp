@@ -17,6 +17,10 @@ void Sol::render(){
     terrain->draw_model();
 }
 
+void Sol::updateForm(double delta_t){
+
+}
+
 Sol::Sol(Point p){
 
     center = p;
@@ -28,12 +32,8 @@ Fleche::Fleche(Point p){
     center = p;
 }
 
-void Fleche::updateForm(double angle, Vector direction, Vector translation){
+void Fleche::updateForm(double delta_t){
 
-    glPushMatrix();
-    glRotated(angle, direction.x, direction.y, direction.z);
-    glTranslated(translation.x, translation.y, translation.z);
-    glPopMatrix();
 }
 
 void Fleche::render(){
@@ -45,12 +45,8 @@ void Fleche::render(){
 Ciel::Ciel(Point p){
 }
 
-void Ciel::updateForm(double angle, Vector direction, Vector translation) {
+void Ciel::updateForm(double delta_t) {
 
-    glPushMatrix();
-    glRotated(angle, direction.x, direction.y, direction.z);
-    glTranslated(translation.x, translation.y, translation.z);
-    glPopMatrix();
 }
 
 void Ciel::render(){
@@ -173,10 +169,6 @@ void Cible::render(){
     glDisable(GL_TEXTURE_2D);
 }
 
-void Cible::updateForm(double angle, Vector direction, Vector translation){
+void Cible::updateForm(double delta_t){
 
-    glPushMatrix();
-    glRotated(angle, direction.x, direction.y, direction.z);
-    glTranslated(translation.x, translation.y, translation.z);
-    glPopMatrix();
 }

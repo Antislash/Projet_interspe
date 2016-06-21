@@ -327,16 +327,16 @@ int main(int argc, char* args[])
                             cameraLookX += 0.2;
                             break;
                         case SDLK_q:
-                            forms_list[0]->updateForm(ANGLE, Vector(1.0,0.0,0.0), Vector(2.0,0.0,0.0));
+                            forms_list[0]->updateForm(ANGLE);
                             break;
                         case SDLK_d:
-                            forms_list[0]->updateForm(-ANGLE, Vector(1.0,0.0,0.0), Vector(-2.0,0.0,0.0));
+                            forms_list[0]->updateForm(-ANGLE);
                             break;
                         case SDLK_z:
-                            forms_list[0]->updateForm(ANGLE, Vector(0.0,1.0,0.0), Vector(0.0,2.0,0.0));
+                            forms_list[0]->updateForm(ANGLE);
                             break;
                         case SDLK_s:
-                            forms_list[0]->updateForm(-ANGLE, Vector(0.0,1.0,0.0), Vector(0.0,-2.0,0.0));
+                            forms_list[0]->updateForm(-ANGLE);
                             break;
 
                         default:
