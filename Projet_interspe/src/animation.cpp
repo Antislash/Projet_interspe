@@ -31,9 +31,6 @@ Point Animation::integration_vit(double dt)
     integration_acc(dt);
 
     pos.x += spd.x*dt;
-
-    cout << "Vitesse y = " << spd.y*dt << endl;
-
     pos.y += spd.y*dt;
     pos.z += spd.z*dt;
 

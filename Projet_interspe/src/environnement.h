@@ -4,8 +4,6 @@
 #include "OBJlib.h"
 #include "forms.h"
 
-const int SIZE_PLAN_WIDTH = 3;
-const int SIZE_PLAN_LENGTH = 12;
 const int DISTANCE_SKYBOX = 50;
 
 class Sol : public Form
@@ -45,6 +43,13 @@ class Ciel : public Form
 
 private:
     Point center;
+    GLuint texture1 = loadTexture("models/skybox4/top.jpg" );
+    GLuint texture2 = loadTexture("models/skybox4/back.jpg");
+    GLuint texture3 = loadTexture("models/skybox4/front.jpg" );
+    GLuint texture4 = loadTexture("models/skybox4/left.jpg");
+    GLuint texture5 = loadTexture("models/skybox4/right.jpg" );
+    GLuint texture6 = loadTexture("models/Skybox/bottom.jpg");
+
 
 public:
     Ciel(Point p = Point());
@@ -58,6 +63,7 @@ class Cible : public Form
 private:
     float taille;
     Point center;
+    GLuint texture = loadTexture("models/cible.jpg");
 
 public:
     Cible(Point p = Point(), float t = 1.00){center = p; taille = t;}

@@ -35,11 +35,11 @@ void Boule::render()
     GLUquadricObj *quadric = gluNewQuadric();
     glColor3f(1,1,1);
     glTranslatef(center.x,center.y,center.z);
-    cout << "angle = " << angle << endl;
+
     glRotated(angle, 1,0,0);
     gluQuadricTexture(quadric, GL_TRUE);
 
-    glBindTexture(GL_TEXTURE_2D, loadTexture("models/Ball_15.jpg" ));
+    glBindTexture(GL_TEXTURE_2D, texture);
     gluSphere(quadric, radius, 32, 32);
 
     gluDeleteQuadric(quadric);

@@ -359,7 +359,7 @@ int main(int argc, char* args[])
 
             if ((current_time - previous_time) > ANIM_DELAY)
             {
-                cout << "temps elapse :" << dt << endl;
+//                cout << "temps elapse :" << dt << endl;
                 previous_time = current_time;
                 update(forms_list, dt);
             }

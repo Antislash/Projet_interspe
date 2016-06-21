@@ -17,6 +17,8 @@ private:
     double radius;
     Animation anim;
     double angle;
+    GLuint texture = loadTexture("models/Ball_15.jpg" );
+
 public:
     Boule(Point c = Point(), double r = 1.0);
     const Point getCenter() {return center;}

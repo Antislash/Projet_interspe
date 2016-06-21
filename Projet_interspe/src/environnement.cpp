@@ -52,16 +52,10 @@ void Ciel::updateForm(double delta_t) {
 void Ciel::render(){
 
     glTranslated(0,DISTANCE_SKYBOX,0);
-    GLuint texture1 = loadTexture("models/skybox4/top.jpg" );
-    GLuint texture2 = loadTexture("models/skybox4/back.jpg");
-    GLuint texture3 = loadTexture("models/skybox4/front.jpg" );
-    GLuint texture4 = loadTexture("models/skybox4/left.jpg");
-    GLuint texture5 = loadTexture("models/skybox4/right.jpg" );
-    GLuint texture6 = loadTexture("models/skybox4/bottom.jpg");
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
-
+    cout << "distance skybox=" << DISTANCE_SKYBOX << endl;
 //    Face pour le haut
     glBindTexture(GL_TEXTURE_2D, texture1);
     glColor3f(1,1,1);
@@ -92,30 +86,30 @@ void Ciel::render(){
     glEnd();
 
     //Face pour le devant
-//    glBindTexture(GL_TEXTURE_2D, texture3);
-//        glBegin(GL_QUADS);
-//        glTexCoord2d(0,1);
-//        glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
-//        glTexCoord2d(0,0);
-//        glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
-//        glTexCoord2d(1,0);
-//        glVertex3d(-DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
-//        glTexCoord2d(1,1);
-//        glVertex3d(-DISTANCE_SKYBOX,DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
-//    glEnd();
+    glBindTexture(GL_TEXTURE_2D, texture3);
+        glBegin(GL_QUADS);
+        glTexCoord2d(0,1);
+        glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
+        glTexCoord2d(0,0);
+        glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
+        glTexCoord2d(1,0);
+        glVertex3d(-DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
+        glTexCoord2d(1,1);
+        glVertex3d(-DISTANCE_SKYBOX,DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
+    glEnd();
 
     //Face de gauche
-//    glBindTexture(GL_TEXTURE_2D, texture4);
-//        glBegin(GL_QUADS);
-//        glTexCoord2d(1,1);
-//        glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,DISTANCE_SKYBOX);
-//        glTexCoord2d(0,1);
-//        glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
-//        glTexCoord2d(0,0);
-//        glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
-//        glTexCoord2d(1,0);
-//        glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,DISTANCE_SKYBOX);
-//    glEnd();
+    glBindTexture(GL_TEXTURE_2D, texture4);
+        glBegin(GL_QUADS);
+        glTexCoord2d(1,1);
+        glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,DISTANCE_SKYBOX);
+        glTexCoord2d(0,1);
+        glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
+        glTexCoord2d(0,0);
+        glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
+        glTexCoord2d(1,0);
+        glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,DISTANCE_SKYBOX);
+    glEnd();
 
     //Face de droite
     glColor3f(1,1,1);
@@ -155,7 +149,7 @@ void Cible::render(){
     glEnable(GL_TEXTURE_2D);
 
 //    Face pour le haut
-    glBindTexture(GL_TEXTURE_2D, loadTexture("models/cible.jpg"));
+    glBindTexture(GL_TEXTURE_2D, texture);
     glColor3f(1,1,1);
     glTranslated(center.x,center.y,center.z);
     glBegin(GL_QUADS);
