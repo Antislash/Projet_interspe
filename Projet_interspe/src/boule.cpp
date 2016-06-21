@@ -14,16 +14,14 @@ Boule::Boule(Point c, double r)
 {
     center = c;
     radius = r;
-    ballon=new MeshObj("models/untitled.obj");
+    angle = 0;
 }
 
 void Boule::updateForm(double delta_t) {
 
     anim.integration_vit(delta_t);
     center = anim.getPos();
-    cout << "x=" << center.x << endl;
-    cout << "y=" << center.y << endl;
-    cout << "z=" << center.z << endl;
+    angle += 30;
 }
 
 void Boule::render()
@@ -37,6 +35,8 @@ void Boule::render()
     GLUquadricObj *quadric = gluNewQuadric();
     glColor3f(1,1,1);
     glTranslatef(center.x,center.y,center.z);
+    cout << "angle = " << angle << endl;
+    glRotated(angle, 1,0,0);
     gluQuadricTexture(quadric, GL_TRUE);
 
     glBindTexture(GL_TEXTURE_2D, loadTexture("models/Ball_15.jpg" ));

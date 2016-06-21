@@ -15,8 +15,8 @@ class Boule : public Form
 private:
     Point center;
     double radius;
-    MeshObj *ballon;
     Animation anim;
+    double angle;
 public:
     Boule(Point c = Point(), double r = 1.0);
     const Point getCenter() {return center;}
