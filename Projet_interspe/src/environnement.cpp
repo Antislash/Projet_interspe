@@ -172,3 +172,11 @@ void Cible::render(){
 
     glDisable(GL_TEXTURE_2D);
 }
+
+void Cible::updateForm(double angle, Vector direction, Vector translation){
+
+    glPushMatrix();
+    glRotated(angle, direction.x, direction.y, direction.z);
+    glTranslated(translation.x, translation.y, translation.z);
+    glPopMatrix();
+}

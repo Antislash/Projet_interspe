@@ -1,0 +1,23 @@
+# Blender MTL File: 'mount.blend1.obj'
+# Material Count: 2
+
+newmtl Material.001
+Ns 94.117647
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\Soft\blender-2.70a-windows32\FILES\Textures\Ground\GRASS\ground_grass_3264_4062_Small.jpg
+
+newmtl Material.002
+Ns 94.117647
+Ka 0.000000 0.000000 0.000000
+Kd 0.050977 0.050977 0.050977
+Ks 0.001641 0.001641 0.001641
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2

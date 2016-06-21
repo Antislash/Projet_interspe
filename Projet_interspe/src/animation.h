@@ -16,15 +16,12 @@ public:
     void setAngle(double agl) {angle = agl;}
     const Vector getRotVect() {return rot_vect;}
     void setRotVect(Vector vect) {rot_vect = vect;}
-<<<<<<< Updated upstream
-
 
     // Moez
     Vector integration_acc(Vector acc, Vector vit_ini);
     Vector integration_vit(Vector vit, Vector pos_ini);
-=======
     void update();
-    
+
     Vector vit_ini;
     Vector pos_ini;
     Vector acceleration;
@@ -33,7 +30,6 @@ public:
     Vector Vitesse;
     Vector integration_acc(Vector acceleration, Vector vit_ini, Vector vitesse); // acc = gravité ; renvoie vecteur vitesse
     Vector integration_vit(Vector vitesse, Vector pos_ini, Vector acceleration, Vector Position); // renvoie vecteur position
->>>>>>> Stashed changes
 
 };
 

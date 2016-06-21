@@ -62,5 +62,6 @@ private:
 public:
     Cible(Point p = Point(), float t = 1.00){center = p; taille = t;}
     void render();
+    void updateForm(double angle, Vector direction, Vector translation);
 };
 #endif // ENVIRONNEMENT_H_INCLUDED
