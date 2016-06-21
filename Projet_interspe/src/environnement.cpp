@@ -52,12 +52,12 @@ void Ciel::updateForm(double delta_t) {
 void Ciel::render(){
 
     glTranslated(0,DISTANCE_SKYBOX,0);
-    GLuint texture1 = loadTexture("models/Skybox3/top.jpg" );
-    GLuint texture2 = loadTexture("models/Skybox3/back.jpg");
-//    GLuint texture3 = loadTexture("models/Skybox3/front.jpg" );
-//    GLuint texture4 = loadTexture("models/Skybox3/left.jpg");
-    GLuint texture5 = loadTexture("models/Skybox3/right.jpg" );
-//    GLuint texture6 = loadTexture("models/Skybox3/bottom_light.jpg");
+    GLuint texture1 = loadTexture("models/skybox4/top.jpg" );
+    GLuint texture2 = loadTexture("models/skybox4/back.jpg");
+    GLuint texture3 = loadTexture("models/skybox4/front.jpg" );
+    GLuint texture4 = loadTexture("models/skybox4/left.jpg");
+    GLuint texture5 = loadTexture("models/skybox4/right.jpg" );
+    GLuint texture6 = loadTexture("models/skybox4/bottom.jpg");
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
@@ -77,17 +77,17 @@ void Ciel::render(){
     glEnd();
 
     //Face pour le bas
-//    glBindTexture(GL_TEXTURE_2D, texture6);
-//    glTexParameteri(GL_TEXTURE_2D, texture6, GL_REPEAT);
-    glColor3f(1,1,0);
+    glBindTexture(GL_TEXTURE_2D, texture6);
+    glTexParameteri(GL_TEXTURE_2D, texture6, GL_REPEAT);
+    glColor3f(1,1,1);
     glBegin(GL_QUADS);
-//        glTexCoord2d(0,1);
+        glTexCoord2d(0,1);
         glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,DISTANCE_SKYBOX);
-//        glTexCoord2d(0,0);
+        glTexCoord2d(0,0);
         glVertex3d(-DISTANCE_SKYBOX,-DISTANCE_SKYBOX,DISTANCE_SKYBOX);
-//        glTexCoord2d(1,0);
+        glTexCoord2d(1,0);
         glVertex3d(-DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
-//        glTexCoord2d(1,1);
+        glTexCoord2d(1,1);
         glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
     glEnd();
 
