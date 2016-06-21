@@ -25,10 +25,7 @@ class Form
 {
 protected:
     Color col;
-    Animation anim;
 public:
-    Animation& getAnim() {return anim;}
-    void setAnim(Animation ani) {anim = ani;}
     // Virtual method : Form is a generic type, no rendering is possible
     virtual void render() = 0;
     // Pure virtual to ensure all objects have their physics implemented

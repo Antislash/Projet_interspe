@@ -1,31 +1,41 @@
 #include "animation.h"
+#include <iostream>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 
+using namespace std;
 
-void Animation::update()
+Animation::Animation(double ph, double th, Vector accel, Vector speed, Point p)
 {
-    // Complete this part
-    angle += 0.05;
+    // Constructor
+    // Initialization
+    phi = ph;
+    theta = th;
+    acc = accel;
+    spd = speed;
+    pos = p;
 }
 
 //____________________________ Moez
 
-Vector Animation::integration_acc(Vector acceleration, Vector vitesse_ini, Vector vitesse)
+Vector Animation::integration_acc(double dt)
 {
-    int dt; // 10 ms ?
-    vitesse.x += acceleration.x*dt;
-    vitesse.y += acceleration.y*dt;
-    vitesse.z += acceleration.z*dt;
-    return vitesse;
+    spd.x += acc.x*dt;
+    spd.y += acc.y*dt;
+    spd.z += acc.z*dt;
 
 }
 
-Vector Animation::integration_vit(Vector vitesse, Vector position_ini, Vector acceleration, Vector position)
+Point Animation::integration_vit(double dt)
 {
-    int dt; // 10 ms ?
-    position.x += vitesse.x*dt+(1/2)*acceleration.x*dt;
-    position.y += vitesse.y*dt+(1/2)*acceleration.y*dt;
-    position.z += vitesse.z*dt+(1/2)*acceleration.z*dt;
-    return position;
+    integration_acc(dt);
+
+    pos.x += spd.x*dt;
+
+    cout << "Vitesse y = " << spd.y*dt << endl;
+
+    pos.y += spd.y*dt;
+    pos.z += spd.z*dt;
 
 }
 

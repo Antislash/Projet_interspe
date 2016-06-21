@@ -16,10 +16,12 @@ private:
     Point center;
     double radius;
     MeshObj *ballon;
+    Animation anim;
 public:
     Boule(Point c = Point(), double r = 1.0);
     const Point getCenter() {return center;}
     void setCenter(Point c) {center = c;}
+    void setAnimation(Animation animation) {anim = animation;}
     void render();
     void updateForm(double delta_t);
 };

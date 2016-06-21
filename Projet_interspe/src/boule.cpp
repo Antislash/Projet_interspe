@@ -4,6 +4,7 @@
 #include <string.h>
 #include <SDL2/SDL_image.h>
 #include "boule.h"
+#include "animation.h"
 #include <iostream>
 
 using namespace std;
@@ -18,6 +19,11 @@ Boule::Boule(Point c, double r)
 
 void Boule::updateForm(double delta_t) {
 
+    anim.integration_vit(delta_t);
+    center = anim.getPos();
+    cout << "x=" << center.x << endl;
+    cout << "y=" << center.y << endl;
+    cout << "z=" << center.z << endl;
 }
 
 void Boule::render()

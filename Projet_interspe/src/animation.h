@@ -4,7 +4,7 @@
 #include "geometry.h"
 
 
-class Animation
+/*class Animation
 {
 private:
     double angle;
@@ -17,21 +17,36 @@ public:
     const Vector getRotVect() {return rot_vect;}
     void setRotVect(Vector vect) {rot_vect = vect;}
 
-    // Moez
-    Vector integration_acc(Vector acc, Vector vit_ini);
-    Vector integration_vit(Vector vit, Vector pos_ini);
-    void update();
 
-    Vector vit_ini;
-    Vector pos_ini;
-    Vector acceleration;
-    Vector vitesse;
-    Vector Position;
-    Vector Vitesse;
-    Vector integration_acc(Vector acceleration, Vector vit_ini, Vector vitesse); // acc = gravité ; renvoie vecteur vitesse
-    Vector integration_vit(Vector vitesse, Vector pos_ini, Vector acceleration, Vector Position); // renvoie vecteur position
+};*/
 
+class Animation
+{
+private:
+    double phi, theta; // Azimuthal and polar angles for local coordinate system orientation
+    Vector acc, spd; //  Instantaneous acceleration and speed
+    Point pos; // Instantaneous position of the local coordinate system origin
+
+public:
+    Animation(double ph = 0.0, double th = 0.0,
+              Vector accel = Vector(0.0, 0.0, 0.0),
+              Vector speed = Vector(0.0, 0.0, 0.0),
+              Point p = Point(0.0, 0.0, 0.0)
+              );
+    const double getPhi() {return phi;}
+    const double getTheta() {return theta;}
+    void setPhi(double agl) {phi = agl;}
+    void setTheta(double agl) {theta = agl;}
+    const Vector getAccel() {return acc;}
+    const Vector getSpeed() {return spd;}
+    void setAccel(Vector vect) {acc = vect;}
+    void setSpeed(Vector vect) {spd = vect;}
+    const Point getPos() {return pos;}
+    void setPos(Point pt) {pos = pt;}
+    Vector integration_acc(double dt); // acc = gravité ; renvoie vecteur vitesse
+    Point integration_vit(double dt); // renvoie vecteur position
 };
+
 
 
 #endif // ANIMATION_H_INCLUDED

@@ -29,7 +29,7 @@ bool avancer = false;
 const int MAX_FORMS_NUMBER = 10;
 
 // Animation actualization delay (in ms) => 100 updates per second
-const Uint32 ANIM_DELAY = 10;
+const Uint32 ANIM_DELAY = 1;
 
 
 // Starts up SDL, creates window, and initializes OpenGL
@@ -151,15 +151,15 @@ bool initGL()
     return success;
 }
 
-void update(Form* formlist[MAX_FORMS_NUMBER])
+void update(Form* formlist[MAX_FORMS_NUMBER], double elapseTime)
 {
     // Update the list of forms
-    /*unsigned short i = 0;
+    unsigned short i = 0;
     while(formlist[i] != NULL)
     {
-        formlist[i]->updateForm(double angle, Vector direction, Vector translation);
+        formlist[i]->updateForm(elapseTime);
         i++;
-    }*/
+    }
 }
 
 const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
@@ -174,14 +174,14 @@ const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
     if(avancer){
 //        pos += 0.01;
 //        gluLookAt(2*SIZE_PLAN_WIDTH,2,0, 0,2,SIZE_PLAN_LENGTH, 0.0,1.0,0.0);
-        gluLookAt(0,-DISTANCE_SKYBOX/2 + 1,-DISTANCE_SKYBOX/2 + 2, 0.0,-30.0,-5.0, 0.0,1.0,0.0);
+        gluLookAt(0, 2,-DISTANCE_SKYBOX/2 , cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
     }
     else{
             pos += 0.5;
         // Set the camera position and parameters
         //gluLookAt(2,4,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
         //Placement, eye, up
-        gluLookAt(0,-DISTANCE_SKYBOX + 2,-DISTANCE_SKYBOX + 2, cameraLookX,-DISTANCE_SKYBOX + cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
+        gluLookAt(0, 2,-DISTANCE_SKYBOX + 2, cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
     }
 
 
@@ -268,18 +268,19 @@ int main(int argc, char* args[])
         // Create here specific forms and add them to the list...
         // Don't forget to update the actual number_of_forms !
 
-        Boule ballon(Point(0,-DISTANCE_SKYBOX+1,-DISTANCE_SKYBOX + 7),0.5);
-        Fleche fleche(Point(0,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX + 7));
+        Boule ballon(Point(0,1,-DISTANCE_SKYBOX + 7),0.5);
+        ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(0,10,5),Point(0,1,-DISTANCE_SKYBOX + 7)));
+        Fleche fleche(Point(0,1,-DISTANCE_SKYBOX + 7));
         Ciel ciel(Point (0,0,0));
-        Cible cible(Point(1,-DISTANCE_SKYBOX+4,DISTANCE_SKYBOX/2 -7),4);
+        Cible cible(Point(1,4,DISTANCE_SKYBOX/2 -7),4);
         //Sol terrain(Point(0,-1,0));
         //MeshObj *fleche=new MeshObj("models/arrow/arrow.obj");
 
 
         forms_list[0] = &ballon;
-        forms_list[1] = &fleche;
-        forms_list[2] = &cible;
-        forms_list[3] = &ciel;
+        //forms_list[1] = &fleche;
+        //forms_list[2] = &cible;
+        //forms_list[3] = &ciel;
 
 
         // Get first "current time"
@@ -314,6 +315,9 @@ int main(int argc, char* args[])
                         case SDLK_ESCAPE:
                             quit = true;
                             break;
+                        case SDLK_SPACE:
+                            avancer=true;
+                            break;
                         case SDLK_UP:
                             cameraLookY += 0.2;
                             break;
@@ -327,16 +331,12 @@ int main(int argc, char* args[])
                             cameraLookX += 0.2;
                             break;
                         case SDLK_q:
-                            forms_list[0]->updateForm(ANGLE);
                             break;
                         case SDLK_d:
-                            forms_list[0]->updateForm(-ANGLE);
                             break;
                         case SDLK_z:
-                            forms_list[0]->updateForm(ANGLE);
                             break;
                         case SDLK_s:
-                            forms_list[0]->updateForm(-ANGLE);
                             break;
 
                         default:
@@ -350,10 +350,14 @@ int main(int argc, char* args[])
 
             // Update the scene
             current_time = SDL_GetTicks(); // get the elapsed time from SDL initialization (ms)
+            double milli = 1000;
+            double dt = (current_time - previous_time)/milli;
+
             if ((current_time - previous_time) > ANIM_DELAY)
             {
+                cout << "temps elapse :" << dt << endl;
                 previous_time = current_time;
-                update(forms_list);
+                update(forms_list, dt);
             }
 
             // Render the scene

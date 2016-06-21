@@ -51,6 +51,7 @@ void Ciel::updateForm(double delta_t) {
 
 void Ciel::render(){
 
+    glTranslated(0,DISTANCE_SKYBOX,0);
     GLuint texture1 = loadTexture("models/Skybox/top.jpg" );
     GLuint texture2 = loadTexture("models/Skybox/back.jpg");
     GLuint texture3 = loadTexture("models/Skybox/front.jpg" );
