@@ -352,6 +352,7 @@ int main(int argc, char* args[])
             current_time = SDL_GetTicks(); // get the elapsed time from SDL initialization (ms)
             if ((current_time - previous_time) > ANIM_DELAY)
             {
+                cout << "temps= " << (current_time - previous_time) << endl;
                 previous_time = current_time;
                 update(forms_list);
             }
