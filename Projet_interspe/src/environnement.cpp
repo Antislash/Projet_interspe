@@ -77,6 +77,7 @@ void Ciel::render(){
 
     //Face pour le bas
     glBindTexture(GL_TEXTURE_2D, texture6);
+    glTexParameteri(GL_TEXTURE_2D, texture6, GL_REPEAT);
     glColor3f(1,1,1);
     glBegin(GL_QUADS);
         glTexCoord2d(0,1);
@@ -129,7 +130,7 @@ void Ciel::render(){
     glEnd();
 
     //Face de derrière
-    glBindTexture(GL_TEXTURE_2D, texture2);
+    /*glBindTexture(GL_TEXTURE_2D, texture2);
         glBegin(GL_QUADS);
         glTexCoord2d(0,1);
         glVertex3d(DISTANCE_SKYBOX,DISTANCE_SKYBOX,DISTANCE_SKYBOX);
@@ -139,7 +140,7 @@ void Ciel::render(){
         glVertex3d(-DISTANCE_SKYBOX,-DISTANCE_SKYBOX,DISTANCE_SKYBOX);
         glTexCoord2d(1,1);
         glVertex3d(-DISTANCE_SKYBOX,DISTANCE_SKYBOX,DISTANCE_SKYBOX);
-    glEnd();
+    glEnd();*/
 
 
     glDisable(GL_TEXTURE_2D);
