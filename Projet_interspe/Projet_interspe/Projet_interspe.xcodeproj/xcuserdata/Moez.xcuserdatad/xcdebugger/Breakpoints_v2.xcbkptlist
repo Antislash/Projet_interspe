@@ -29,7 +29,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "Animation::integration_vit(Vector vitesse, Vector position_ini, Vector acceleration, Vector Position)"
+            landmarkName = "Animation::integration_vit(Vector vitesse, Vector position_ini, Vector acceleration, Vector position)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -45,7 +45,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "Animation::integration_vit(Vector vitesse, Vector position_ini, Vector acceleration, Vector Position)"
+            landmarkName = "Animation::integration_vit(Vector vitesse, Vector position_ini, Vector acceleration, Vector position)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
