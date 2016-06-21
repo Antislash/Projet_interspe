@@ -23,7 +23,7 @@ using namespace std;
 const int SCREEN_WIDTH = 720;
 const int SCREEN_HEIGHT = 560;
 float pos = 0;
-bool avancer = false;
+bool lancer = false;
 
 // Max number of forms : static allocation
 const int MAX_FORMS_NUMBER = 10;
@@ -51,9 +51,9 @@ void close(SDL_Window** window);
 
 double cameraLookY = 0;
 double cameraLookX = 0;
-double directionX = 0;
-double directionY = 0;
-double directionZ = 0;
+double positionX = 0;
+double positionY = 0;
+double positionZ = 0;
 
 
 /***************************************************************************/
@@ -154,15 +154,18 @@ bool initGL()
 void update(Form* formlist[MAX_FORMS_NUMBER], double elapseTime)
 {
     // Update the list of forms
-    unsigned short i = 0;
-    while(formlist[i] != NULL)
-    {
-        formlist[i]->updateForm(elapseTime);
-        i++;
+    if (lancer) {
+
+        unsigned short i = 0;
+        while(formlist[i] != NULL)
+        {
+            formlist[i]->updateForm(elapseTime);
+            i++;
+        }
     }
 }
 
-const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
+const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon) //, MeshObj* ballonFoot
 {
     // Clear color buffer and Z-Buffer
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
@@ -171,10 +174,10 @@ const void render(Form* formlist[MAX_FORMS_NUMBER]) //, MeshObj* ballonFoot
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity();
 
-    if(avancer){
+    if(lancer){
 //        pos += 0.01;
 //        gluLookAt(2*SIZE_PLAN_WIDTH,2,0, 0,2,SIZE_PLAN_LENGTH, 0.0,1.0,0.0);
-        gluLookAt(0, 2,-DISTANCE_SKYBOX/2 , cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
+        gluLookAt(-DISTANCE_SKYBOX/2, 2,0, ballon.getCenter().x, ballon.getCenter().y + 2, ballon.getCenter().z, 0.0,1.0,0.0);
     }
     else{
             pos += 0.5;
@@ -269,7 +272,7 @@ int main(int argc, char* args[])
         // Don't forget to update the actual number_of_forms !
 
         Boule ballon(Point(0,1,-DISTANCE_SKYBOX + 7),0.5);
-        ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(0,10,5),Point(0,1,-DISTANCE_SKYBOX + 7)));
+        ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(0,15,25),Point(0,1,-DISTANCE_SKYBOX + 7)));
         Fleche fleche(Point(0,1,-DISTANCE_SKYBOX + 7));
         Ciel ciel(Point (0,0,0));
         Cible cible(Point(1,4,DISTANCE_SKYBOX/2 -7),4);
@@ -278,9 +281,9 @@ int main(int argc, char* args[])
 
 
         forms_list[0] = &ballon;
-        //forms_list[1] = &fleche;
-        //forms_list[2] = &cible;
-        //forms_list[3] = &ciel;
+        forms_list[3] = &fleche;
+        forms_list[1] = &cible;
+        forms_list[2] = &ciel;
 
 
         // Get first "current time"
@@ -301,7 +304,6 @@ int main(int argc, char* args[])
                     quit = true;
                     break;
                 case SDL_MOUSEBUTTONUP:
-                    avancer = true;
                     break;
 
 
@@ -316,7 +318,7 @@ int main(int argc, char* args[])
                             quit = true;
                             break;
                         case SDLK_SPACE:
-                            avancer=true;
+                            lancer=true;
                             break;
                         case SDLK_UP:
                             cameraLookY += 0.2;
@@ -361,7 +363,7 @@ int main(int argc, char* args[])
             }
 
             // Render the scene
-            render(forms_list);
+            render(forms_list, ballon);
 
             // Update window screen
             SDL_GL_SwapWindow(gWindow);
