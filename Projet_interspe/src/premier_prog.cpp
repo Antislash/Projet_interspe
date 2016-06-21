@@ -178,7 +178,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon) //, MeshObj* b
 //        pos += 0.01;
 //        gluLookAt(2*SIZE_PLAN_WIDTH,2,0, 0,2,SIZE_PLAN_LENGTH, 0.0,1.0,0.0);
         //gluLookAt(DISTANCE_SKYBOX/2, 2,0, ballon.getCenter().x, ballon.getCenter().y + 2, ballon.getCenter().z, 0.0,1.0,0.0);
-        gluLookAt(DISTANCE_SKYBOX - 1, 2,0, 0, 0,2, 0.0,1.0,0.0);
+        gluLookAt(DISTANCE_SKYBOX - 1, 2,0, ballon.getCenter().x, ballon.getCenter().y + 2, ballon.getCenter().z, 0.0,1.0,0.0);
         //gluLookAt(0, 2,-DISTANCE_SKYBOX + 2, cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
     }
     else{

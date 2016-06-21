@@ -55,7 +55,6 @@ void Ciel::render(){
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
-    cout << "distance skybox=" << DISTANCE_SKYBOX << endl;
 //    Face pour le haut
     glBindTexture(GL_TEXTURE_2D, texture1);
     glColor3f(1,1,1);

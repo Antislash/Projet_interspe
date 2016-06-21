@@ -18,10 +18,12 @@ Boule::Boule(Point c, double r)
 }
 
 void Boule::updateForm(double delta_t) {
+    if(center.y > 0){
+        anim.integration_vit(delta_t);
+        center = anim.getPos();
+        angle += 30;
+    }
 
-    anim.integration_vit(delta_t);
-    center = anim.getPos();
-    angle += 30;
 }
 
 void Boule::render()
