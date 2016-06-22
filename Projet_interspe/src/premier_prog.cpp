@@ -371,7 +371,7 @@ int main(int argc, char* args[])
                                 appuiPuissance = true;
                                 time_puissance = current_time;
                             }
-                            else if(!lancer && appuiPuissance){
+                            else if(!lancer && appuiPuissance && (current_time - time_puissance)/50 <= 55 ){
                                 puissance = (current_time - time_puissance)/50;
                                 ballon.setPuissance(puissance);
                             }
@@ -412,6 +412,7 @@ int main(int argc, char* args[])
                             //On remet la puissance de la balle par défaut
                             appuiPuissance = false;
                             ballon.setPuissance(0);
+                            ballon.setTouche(false); // Sert à dire que le ballon n'a toujours pas touché le sol
 
                             //On replace les élément à leur départ
                             initScene(ballon, fleche);

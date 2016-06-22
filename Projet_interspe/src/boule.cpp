@@ -17,13 +17,23 @@ Boule::Boule(Point c, double r)
     radius = r;
     angle = 0;
     puissance = 0;
+    touche = 0;
 }
 
 void Boule::updateForm(double delta_t) {
 
-    anim.integration_vit(delta_t);
-    center = anim.getPos();
-    angle += 30;
+    if(touche){
+        center.y = 0.5;
+    }
+    else if(center.y > 0.5 && !touche){
+        anim.integration_vit(delta_t);
+        center = anim.getPos();
+        angle += 30;
+    }
+    else{
+        touche = true;
+    }
+
 }
 
 void Boule::render()
@@ -53,6 +63,7 @@ void Boule::render()
         glBegin(GL_QUADS);
         glVertex3d(-0.5,0,0);
         glVertex3d(-0.6,0,0);
+        glColor3f(0,1,0);
         glVertex3d(-0.6,puissance/50,0);
         glVertex3d(-0.5,puissance/50,0);
         glEnd();
