@@ -24,6 +24,7 @@ public:
     const Point getCenter() {return center;}
     void setCenter(Point c) {center = c;}
     void setAnimation(Animation animation) {anim = animation;}
+    void setAngle(double a){angle =a;}
     void render();
     void updateForm(double delta_t);
 };

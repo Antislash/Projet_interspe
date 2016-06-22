@@ -1,0 +1,24 @@
+# Blender MTL File: 'None'
+# Material Count: 2
+
+newmtl metal
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd arrow\metal_d.tga
+
+newmtl plastic
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.073978 0.050533
+Ks 0.096663 0.100000 0.083398
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd arrow\plastic_d.tga

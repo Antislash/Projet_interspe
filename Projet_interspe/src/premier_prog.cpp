@@ -165,7 +165,7 @@ void update(Form* formlist[MAX_FORMS_NUMBER], double elapseTime)
     }
 }
 
-const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon) //, MeshObj* ballonFoot
+const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon, Fleche fleche) //, MeshObj* ballonFoot
 {
     // Clear color buffer and Z-Buffer
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
@@ -178,14 +178,22 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon) //, MeshObj* b
 //        pos += 0.01;
 //        gluLookAt(2*SIZE_PLAN_WIDTH,2,0, 0,2,SIZE_PLAN_LENGTH, 0.0,1.0,0.0);
         //gluLookAt(DISTANCE_SKYBOX/2, 2,0, ballon.getCenter().x, ballon.getCenter().y + 2, ballon.getCenter().z, 0.0,1.0,0.0);
-        if(ballon.getCenter().z<10) {
+        if(ballon.getCenter().z<10 && fleche.getAngleY()>0) {
 
             gluLookAt(DISTANCE_SKYBOX - 1, 2,0, 0, 0, ballon.getCenter().z, 0.0,1.0,0.0);
         }
 
-        else {
+        else if (ballon.getCenter().z<10 && fleche.getAngleY()<=0) {
 
+            gluLookAt(-DISTANCE_SKYBOX + 1, 2,0, 0, 0,ballon.getCenter().z, 0.0,1.0,0.0);
+        }
+
+        else if (fleche.getAngleY()>0) {
             gluLookAt(DISTANCE_SKYBOX - 1, 2,0, 0, 0,10, 0.0,1.0,0.0);
+        }
+
+        else if (fleche.getAngleY()<=0) {
+            gluLookAt(-DISTANCE_SKYBOX + 1, 2,0, 0, 0,10, 0.0,1.0,0.0);
         }
         //gluLookAt(0, 2,-DISTANCE_SKYBOX + 2, cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
     }
@@ -200,7 +208,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon) //, MeshObj* b
 
 
     // X, Y and Z axis
-    glPushMatrix(); // Preserve the camera viewing point for further forms
+    /*glPushMatrix(); // Preserve the camera viewing point for further forms
     // Render the coordinates system
 
     //glTranslated(0,1,0);
@@ -217,7 +225,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon) //, MeshObj* b
         glVertex3i(0, 0, 1);
     }
     glEnd();
-    glPopMatrix();
+    glPopMatrix();*/
 
     // Render the list of forms
     unsigned short i = 0;
@@ -240,6 +248,14 @@ void close(SDL_Window** window)
     SDL_Quit();
 }
 
+void initScene (Boule &ballon, Fleche &fleche) {
+
+        fleche.setAngleX(75);
+        fleche.setAngleY(0);
+        ballon.setCenter(Point(0,1,-DISTANCE_SKYBOX + 4));
+        gluLookAt(0, 2,-DISTANCE_SKYBOX + 2, cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
+        ballon.setAngle(0);
+}
 
 /***************************************************************************/
 /* MAIN Function                                                           */
@@ -281,20 +297,25 @@ int main(int argc, char* args[])
         // Create here specific forms and add them to the list...
         // Don't forget to update the actual number_of_forms !
 
-        Boule ballon(Point(0,1,-DISTANCE_SKYBOX + 7),0.5);
-        ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(0,15,25),Point(0,1,-DISTANCE_SKYBOX + 7)));
-        Fleche fleche(Point(0,1,-DISTANCE_SKYBOX + 7));
+        Boule ballon(Point(0,1,-DISTANCE_SKYBOX + 4),0.5);
+        //ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(0,15,25),Point(0,1,-DISTANCE_SKYBOX + 7)));
+        Fleche fleche(Point(0,0.5,-DISTANCE_SKYBOX + 25.5));
+        fleche.setAngleX(75);
+        fleche.setAngleY(0);
         Ciel ciel(Point (0,0,0));
-        Cible cible(Point(1,4,DISTANCE_SKYBOX/2 -7),4);
+        Cible cible1(Point(0,4,DISTANCE_SKYBOX/2 -7),4);
+        Cible cible2(Point(-15,4,DISTANCE_SKYBOX/2 -11),4);
+        Cible cible3(Point(15,4,DISTANCE_SKYBOX/2 -3),4);
         //Sol terrain(Point(0,-1,0));
         //MeshObj *fleche=new MeshObj("models/arrow/arrow.obj");
 
 
         forms_list[0] = &ballon;
         forms_list[3] = &fleche;
-        forms_list[1] = &cible;
+        forms_list[1] = &cible1;
         forms_list[2] = &ciel;
-
+        forms_list[4] = &cible2;
+        forms_list[5] = &cible3;
 
         // Get first "current time"
         previous_time = SDL_GetTicks();
@@ -328,7 +349,10 @@ int main(int argc, char* args[])
                             quit = true;
                             break;
                         case SDLK_SPACE:
-                            lancer=true;
+                            if(!lancer){
+                                ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(-fleche.getAngleY(),90-fleche.getAngleX(),25),Point(0,1,-DISTANCE_SKYBOX + 7)));
+                                lancer=true;
+                            }
                             break;
                         case SDLK_UP:
                             cameraLookY += 0.2;
@@ -343,12 +367,24 @@ int main(int argc, char* args[])
                             cameraLookX += 0.2;
                             break;
                         case SDLK_q:
+                            fleche.setAngleY(fleche.getAngleY()-0.5);
                             break;
                         case SDLK_d:
+                            fleche.setAngleY(fleche.getAngleY()+0.5);
                             break;
                         case SDLK_z:
+                            if (fleche.getAngleX()>0) {
+                               fleche.setAngleX(fleche.getAngleX()-0.5);
+                            }
                             break;
                         case SDLK_s:
+                            if (fleche.getAngleX()<90) {
+                               fleche.setAngleX(fleche.getAngleX()+0.5);
+                            }
+                            break;
+                        case SDLK_r:
+                            lancer = false;
+                            initScene(ballon, fleche);
                             break;
 
                         default:
@@ -373,7 +409,7 @@ int main(int argc, char* args[])
             }
 
             // Render the scene
-            render(forms_list, ballon);
+            render(forms_list, ballon, fleche);
 
             // Update window screen
             SDL_GL_SwapWindow(gWindow);

@@ -28,17 +28,19 @@ Sol::Sol(Point p){
 }
 
 Fleche::Fleche(Point p){
-    fleche = new MeshObj("models/arrow/arrow.obj");
+    fleche = new MeshObj("models/arrow.obj");
     center = p;
 }
 
-void Fleche::updateForm(double delta_t){
+void Fleche::updateForm(double delta_t) {
 
 }
 
 void Fleche::render(){
     glScaled(2,2,2);
     glTranslated(center.x,center.y,center.z);
+    glRotated(angleX,1,0,0);
+    glRotated(angleY,0,0,1);
     fleche->draw_model();
 }
 

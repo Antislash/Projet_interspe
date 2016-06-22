@@ -28,11 +28,19 @@ class Fleche : public Form
 private:
     Point center;
     MeshObj *fleche;
+    Animation anim;
+    double angleX;
+    double angleY;
 
 public:
     Fleche(Point p = Point());
     const Point getCenter() {return center;}
+    double getAngleX() {return angleX;}
+    double getAngleY() {return angleY;}
+    void setAngleX(double _angleX) {angleX = _angleX;}
+    void setAngleY(double _angleY) {angleY = _angleY;}
     void setCenter(Point c) {center = c;}
+    void setAnimation(Animation animation) {anim = animation;}
     void render();
     void updateForm(double delta_t);
 
