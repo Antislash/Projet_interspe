@@ -43,8 +43,8 @@ public:
     void setSpeed(Vector vect) {spd = vect;}
     const Point getPos() {return pos;}
     void setPos(Point pt) {pos = pt;}
-    void integration_acc(double dt); // acc = gravité ; renvoie vecteur vitesse
-    void integration_vit(double dt); // renvoie vecteur position
+    void integration_acc(double dt);
+    void integration_vit(double dt);
 };
 
 
