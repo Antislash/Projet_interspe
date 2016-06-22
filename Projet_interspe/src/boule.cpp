@@ -53,8 +53,8 @@ void Boule::render()
         glBegin(GL_QUADS);
         glVertex3d(-0.5,0,0);
         glVertex3d(-0.6,0,0);
-        glVertex3d(-0.6,puissance/30,0);
-        glVertex3d(-0.5,puissance/30,0);
+        glVertex3d(-0.6,puissance/50,0);
+        glVertex3d(-0.5,puissance/50,0);
         glEnd();
     }
 
