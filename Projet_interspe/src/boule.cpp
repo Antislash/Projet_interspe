@@ -4,6 +4,7 @@
 #include <string.h>
 #include <SDL2/SDL_image.h>
 #include "boule.h"
+#include "environnement.h"
 #include "animation.h"
 #include <iostream>
 
@@ -15,6 +16,7 @@ Boule::Boule(Point c, double r)
     center = c;
     radius = r;
     angle = 0;
+    puissance = 0;
 }
 
 void Boule::updateForm(double delta_t) {
@@ -45,4 +47,16 @@ void Boule::render()
     gluDeleteQuadric(quadric);
     glDisable(GL_TEXTURE_2D);
 
+    if( puissance != 0)
+    {
+        glColor3f(1,0,0);
+        glBegin(GL_QUADS);
+        glVertex3d(-0.5,0,0);
+        glVertex3d(-0.6,0,0);
+        glVertex3d(-0.6,puissance/30,0);
+        glVertex3d(-0.5,puissance/30,0);
+        glEnd();
+    }
+
 }
+

@@ -16,7 +16,7 @@ private:
     Point center;
     double radius;
     Animation anim;
-    double angle;
+    double angle, puissance;
     GLuint texture = loadTexture("models/Ball_15.jpg" );
 
 public:
@@ -27,6 +27,8 @@ public:
     void setAngle(double a){angle =a;}
     void render();
     void updateForm(double delta_t);
+    double getPuissance(){return puissance;}
+    void setPuissance(double p){puissance = p;}
 };
 
 

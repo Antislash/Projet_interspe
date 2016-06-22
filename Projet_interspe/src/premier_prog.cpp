@@ -278,7 +278,7 @@ int main(int argc, char* args[])
     {
         // Main loop flag
         bool quit = false;
-        Uint32 current_time, previous_time;
+        Uint32 current_time, previous_time, time_puissance;
 
         // Event handler
         SDL_Event event;
@@ -319,6 +319,10 @@ int main(int argc, char* args[])
 
         // Get first "current time"
         previous_time = SDL_GetTicks();
+
+        //Sert à savoir si le joueur donne une puissance à la balle
+        bool appuiPuissance = false;
+        double puissance = 0;
         // While application is running
         while(!quit)
         {
@@ -336,6 +340,20 @@ int main(int argc, char* args[])
                     break;
                 case SDL_MOUSEBUTTONUP:
                     break;
+                case SDL_KEYUP:
+                    switch(key_pressed)
+                    {
+                        case SDLK_SPACE:
+                            if(!lancer){
+                                ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(-fleche.getAngleY(),80-fleche.getAngleX(),puissance),Point(0,1,-DISTANCE_SKYBOX + 7)));
+
+                                //On remet la puissance à 0
+                                ballon.setPuissance(0);
+                                lancer=true;
+                            }
+                            break;
+
+                    }
 
 
                 case SDL_KEYDOWN:
@@ -349,11 +367,16 @@ int main(int argc, char* args[])
                             quit = true;
                             break;
                         case SDLK_SPACE:
-                            if(!lancer){
-                                ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(-fleche.getAngleY(),90-fleche.getAngleX(),25),Point(0,1,-DISTANCE_SKYBOX + 7)));
-                                lancer=true;
+                            if(!lancer && !appuiPuissance){
+                                appuiPuissance = true;
+                                time_puissance = current_time;
+                            }
+                            else if(!lancer && appuiPuissance){
+                                puissance = (current_time - time_puissance)/50;
+                                ballon.setPuissance(puissance);
                             }
                             break;
+
                         case SDLK_UP:
                             cameraLookY += 0.2;
                             break;
@@ -373,17 +396,24 @@ int main(int argc, char* args[])
                             fleche.setAngleY(fleche.getAngleY()+0.5);
                             break;
                         case SDLK_z:
-                            if (fleche.getAngleX()>0) {
+                            if (fleche.getAngleX() - 0.5>0) {
                                fleche.setAngleX(fleche.getAngleX()-0.5);
                             }
                             break;
                         case SDLK_s:
-                            if (fleche.getAngleX()<90) {
+                            if (fleche.getAngleX() + 0.5 <80) {
                                fleche.setAngleX(fleche.getAngleX()+0.5);
                             }
                             break;
                         case SDLK_r:
+                            //On autorise un nouveau lancer
                             lancer = false;
+
+                            //On remet la puissance de la balle par défaut
+                            appuiPuissance = false;
+                            ballon.setPuissance(0);
+
+                            //On replace les élément à leur départ
                             initScene(ballon, fleche);
                             break;
 

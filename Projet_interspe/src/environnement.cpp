@@ -76,13 +76,13 @@ void Ciel::render(){
     glTexParameteri(GL_TEXTURE_2D, texture6, GL_REPEAT);
     glColor3f(1,1,1);
     glBegin(GL_QUADS);
-        glTexCoord2d(0,1);
+        glTexCoord2d(0,15);
         glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,DISTANCE_SKYBOX);
         glTexCoord2d(0,0);
         glVertex3d(-DISTANCE_SKYBOX,-DISTANCE_SKYBOX,DISTANCE_SKYBOX);
-        glTexCoord2d(1,0);
+        glTexCoord2d(15,0);
         glVertex3d(-DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
-        glTexCoord2d(1,1);
+        glTexCoord2d(15,15);
         glVertex3d(DISTANCE_SKYBOX,-DISTANCE_SKYBOX,-DISTANCE_SKYBOX);
     glEnd();
 
