@@ -35,7 +35,7 @@ void Boule::render()
     GLUquadricObj *quadric = gluNewQuadric();
     glColor3f(1,1,1);
     glTranslatef(center.x,center.y,center.z);
-    cout << "angle = " << angle << endl;
+    //cout << "angle = " << angle << endl;
     glRotated(angle, 1,0,0);
     gluQuadricTexture(quadric, GL_TRUE);
 

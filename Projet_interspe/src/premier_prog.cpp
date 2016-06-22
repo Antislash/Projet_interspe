@@ -29,7 +29,7 @@ bool lancer = false;
 const int MAX_FORMS_NUMBER = 10;
 
 // Animation actualization delay (in ms) => 100 updates per second
-const Uint32 ANIM_DELAY = 1;
+const Uint32 ANIM_DELAY = 10;
 
 
 // Starts up SDL, creates window, and initializes OpenGL
@@ -359,7 +359,7 @@ int main(int argc, char* args[])
 
             if ((current_time - previous_time) > ANIM_DELAY)
             {
-                cout << "temps elapse :" << dt << endl;
+                //cout << "temps elapse :" << dt << endl;
                 previous_time = current_time;
                 update(forms_list, dt);
             }
