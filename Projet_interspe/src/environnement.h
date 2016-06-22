@@ -4,7 +4,7 @@
 #include "OBJlib.h"
 #include "forms.h"
 
-const int DISTANCE_SKYBOX = 50;
+const int DISTANCE_SKYBOX = 45;
 
 class Sol : public Form
 {

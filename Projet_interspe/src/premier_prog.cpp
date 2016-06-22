@@ -180,12 +180,12 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon, Fleche fleche)
         //gluLookAt(DISTANCE_SKYBOX/2, 2,0, ballon.getCenter().x, ballon.getCenter().y + 2, ballon.getCenter().z, 0.0,1.0,0.0);
         if(ballon.getCenter().z<10 && fleche.getAngleY()>0) {
 
-            gluLookAt(DISTANCE_SKYBOX - 1, 2,0, 0, 0, ballon.getCenter().z, 0.0,1.0,0.0);
+            gluLookAt(DISTANCE_SKYBOX - 1, 2,0, 0, ballon.getCenter().y - 10, ballon.getCenter().z, 0.0,1.0,0.0);
         }
 
         else if (ballon.getCenter().z<10 && fleche.getAngleY()<=0) {
 
-            gluLookAt(-DISTANCE_SKYBOX + 1, 2,0, 0, 0,ballon.getCenter().z, 0.0,1.0,0.0);
+            gluLookAt(-DISTANCE_SKYBOX + 1, 2,0, 0, ballon.getCenter().y - 10,ballon.getCenter().z, 0.0,1.0,0.0);
         }
 
         else if (fleche.getAngleY()>0) {
