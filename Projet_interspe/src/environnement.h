@@ -48,7 +48,7 @@ private:
     GLuint texture3 = loadTexture("models/skybox4/front.jpg" );
     GLuint texture4 = loadTexture("models/skybox4/left.jpg");
     GLuint texture5 = loadTexture("models/skybox4/right.jpg" );
-    GLuint texture6 = loadTexture("models/Skybox/bottom.jpg");
+    GLuint texture6 = loadTexture("models/skybox4/bottom.jpg");
 
 
 public:
