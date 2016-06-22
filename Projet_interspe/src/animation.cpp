@@ -18,7 +18,7 @@ Animation::Animation(double ph, double th, Vector accel, Vector speed, Point p)
 
 //____________________________ Moez
 
-Vector Animation::integration_acc(double dt)
+void Animation::integration_acc(double dt)
 {
     spd.x += acc.x*dt;
     spd.y += acc.y*dt;
@@ -26,7 +26,7 @@ Vector Animation::integration_acc(double dt)
 
 }
 
-Point Animation::integration_vit(double dt)
+void Animation::integration_vit(double dt)
 {
     integration_acc(dt);
 
