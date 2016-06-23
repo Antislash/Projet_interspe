@@ -10,22 +10,6 @@
 #include <iostream>
 using namespace std;
 
-void Sol::render(){
-
-    glTranslatef(center.x,center.y,center.z);
-    glScaled(1,1,1);
-    terrain->draw_model();
-}
-
-void Sol::updateForm(double delta_t){
-
-}
-
-Sol::Sol(Point p){
-
-    center = p;
-    terrain = new MeshObj("models/mount.blend1.obj");
-}
 
 Fleche::Fleche(Point p){
     fleche = new MeshObj("models/arrow.obj");
