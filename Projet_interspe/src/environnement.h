@@ -7,22 +7,6 @@
 
 const int DISTANCE_SKYBOX = 45;
 
-class Sol : public Form
-{
-
-private:
-    Point center;
-    MeshObj *terrain;
-
-public:
-    Sol(Point p = Point());
-    const Point getCenter() {return center;}
-    void setCenter(Point c) {center = c;}
-    void render();
-    void updateForm(double delta_t);
-
-};
-
 class Fleche : public Form
 {
 
