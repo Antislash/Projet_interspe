@@ -48,6 +48,10 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
 
     else if(center.y > 0.5 && !touche){
 
+        Vector t = check_Impact_mur(cibles[1]);
+        if (touche) {
+            anim.vit_collision(delta_t, t);
+        }
         for (int i = 0; i < nb_cibles; i++) {
 
             Vector N = check_Impact_cible(cibles[i]);
@@ -145,3 +149,38 @@ Vector Boule::check_Impact_cible(Cible cible)
     return N;
 }
 
+Vector Boule::check_Impact_mur(Cible cible)
+{
+
+
+    Vector V1 = Vector(cible.getCenter().x - cible.getTaille() +1  - cible.getCenter().x - cible.getTaille(), 0.0, 0.0);
+    Vector V2 = Vector(0.0, cible.getCenter().y - cible.getTaille() +1  - cible.getCenter().y - cible.getTaille(), 0.0);
+
+    Vector N = V1^V2;
+
+    double toto = 1.0/N.norm();
+    N = toto*N;
+
+    Point P = Point(-DISTANCE_SKYBOX, 0, DISTANCE_SKYBOX);
+    Point C = center;
+    Vector PC = Vector(P,C);
+
+    Vector Vect_Impact = (-(N*PC))*N;
+
+    // Calcul de la coordonnée de l'impact
+
+    Point Impact;
+
+    Impact.x = center.x+Vect_Impact.x;
+    Impact.y = center.y+Vect_Impact.y;
+    Impact.z = center.z+Vect_Impact.z;
+
+    if ((Vect_Impact.norm()<=radius)&&(Impact.x>-DISTANCE_SKYBOX)&&(Impact.x<DISTANCE_SKYBOX)&&(Impact.y>0)&&(Impact.y<2*DISTANCE_SKYBOX))
+    {
+        touche = true;
+        return N;
+    }
+
+    touche = false;
+    return N;
+}

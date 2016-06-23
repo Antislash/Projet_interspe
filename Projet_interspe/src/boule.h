@@ -36,6 +36,7 @@ public:
     void setPuissance(double p){puissance = p;}
     void setTouche(bool t){touche = t;}
     Vector check_Impact_cible(Cible cible);
+    Vector check_Impact_mur(Cible cible);
 };
 
 
