@@ -20,8 +20,8 @@ using namespace std;
 /* Constants and functions declarations                                    */
 /***************************************************************************/
 // Screen dimension constants
-const int SCREEN_WIDTH = 720;
-const int SCREEN_HEIGHT = 560;
+const int SCREEN_WIDTH = 1000;
+const int SCREEN_HEIGHT = 750;
 float pos = 0;
 bool lancer = false;
 
@@ -153,14 +153,12 @@ bool initGL()
     return success;
 }
 
-void update(Form* formlist[MAX_FORMS_NUMBER], double elapseTime, Cible* cibles[NB_CIBLES], Boule ballon)
+void update(Form* formlist[MAX_FORMS_NUMBER], double elapseTime, Cible* cibles[NB_CIBLES], Boule *ballon)
 {
     // Update the list of forms
     if (lancer) {
 
-        int nb_cibles = NB_CIBLES;
-
-        ballon.updateForm(elapseTime, *cibles, nb_cibles);
+        ballon->updateForm(elapseTime, *cibles, NB_CIBLES);
 
         unsigned short i = 0;
         while(formlist[i] != NULL)
@@ -186,12 +184,12 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon, Fleche fleche)
         //gluLookAt(DISTANCE_SKYBOX/2, 2,0, ballon.getCenter().x, ballon.getCenter().y + 2, ballon.getCenter().z, 0.0,1.0,0.0);
         if(ballon.getCenter().z<10 && fleche.getAngleY()>0) {
 
-            gluLookAt(DISTANCE_SKYBOX - 1, 2,0, 0, ballon.getCenter().y - 10, ballon.getCenter().z, 0.0,1.0,0.0);
+            gluLookAt(DISTANCE_SKYBOX - 1, 2,0, 0, ballon.getCenter().y, ballon.getCenter().z, 0.0,1.0,0.0);
         }
 
         else if (ballon.getCenter().z<10 && fleche.getAngleY()<=0) {
 
-            gluLookAt(-DISTANCE_SKYBOX + 1, 2,0, 0, ballon.getCenter().y - 10,ballon.getCenter().z, 0.0,1.0,0.0);
+            gluLookAt(-DISTANCE_SKYBOX + 1, 2,0, 0, ballon.getCenter().y,ballon.getCenter().z, 0.0,1.0,0.0);
         }
 
         else if (fleche.getAngleY()>0) {
@@ -457,7 +455,7 @@ int main(int argc, char* args[])
             {
                 //cout << "temps elapse :" << dt << endl;
                 previous_time = current_time;
-                update(forms_list, dt, cibles, ballon);
+                update(forms_list, dt, cibles, &ballon);
             }
 
             // Render the scene

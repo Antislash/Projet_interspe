@@ -39,38 +39,35 @@ void Boule::updateForm(double delta_t) {
 
 void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
 
-    for (int i = 0; i < nb_cibles; i++) {
-
-        //Vector N = check_Impact_cible(cibles[i]);
-
-        if (touche) {
-            cout << "touche" << endl;
-            //anim.vit_collision(delta_t, N);
-        }
-    }
-
-    if (!touche)
-    {
-        //cout << "passe2" << endl;
-        anim.integration_acc(delta_t);
-    }
-
-    anim.integration_vit(delta_t);
-
-    center = anim.getPos();
-
-    /*if(touche){
+    if(toucheSol){
         center.y = 0.5;
     }
     else if(center.y > 0.5 && !touche){
+
+        for (int i = 0; i < nb_cibles; i++) {
+
+            Vector N = check_Impact_cible(cibles[i]);
+
+            if (touche) {
+                center.x += 15;
+                anim.vit_collision(delta_t, N);
+            }
+        }
+
+        if (!touche)
+        {
+            //cout << "passe2" << endl;
+            anim.integration_acc(delta_t);
+        }
+
         anim.integration_vit(delta_t);
+
         center = anim.getPos();
         angle += 30;
     }
     else{
         touche = true;
-    }*/
-
+    }
 }
 
 void Boule::render()
@@ -111,18 +108,19 @@ void Boule::render()
 Vector Boule::check_Impact_cible(Cible cible)
 {
 
-    Vector V1 = (cible.getCenter().x - cible.getTaille() +1  - cible.getCenter().x - cible.getTaille(), 0.0, 0.0);
-    Vector V2 = (0.0, cible.getCenter().y - cible.getTaille() +1  - cible.getCenter().y - cible.getTaille(), 0.0);
+    Vector V1 = Vector(cible.getCenter().x - cible.getTaille() +1  - cible.getCenter().x - cible.getTaille(), 0.0, 0.0);
+    Vector V2 = Vector(0.0, cible.getCenter().y - cible.getTaille() +1  - cible.getCenter().y - cible.getTaille(), 0.0);
 
     Vector N = V1^V2;
 
-    N = N*(1/N.norm());
+    double toto = 1.0/N.norm();
+    N = toto*N;
 
-    Point P = (-60.0, 0.0, -60.0);
+    Point P = Point(cible.getCenter().x, cible.getCenter().y - cible.getTaille(), cible.getCenter().z + 4);
     Point C = center;
     Vector PC = Vector(P,C);
 
-    Vector Vect_Impact = -(N*PC)*N;
+    Vector Vect_Impact = (-(N*PC))*N;
 
     // Calcul de la coordonnée de l'impact
 
@@ -133,7 +131,6 @@ Vector Boule::check_Impact_cible(Cible cible)
     Impact.z = center.z+Vect_Impact.z;
 
     if ((Vect_Impact.norm()<=radius)&&(Impact.x>cible.getCenter().x-cible.getTaille())&&(Impact.x<cible.getCenter().x+cible.getTaille())&&(Impact.y>cible.getCenter().y-cible.getTaille())&&(Impact.y<cible.getCenter().y+cible.getTaille()))
-
     {
         touche = true;
         return N;

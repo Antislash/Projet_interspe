@@ -129,3 +129,14 @@ Vector operator^(const Vector &v1, const Vector &v2)
 
     return res;
 }
+
+/*Vector operator=(const Vector &v1)
+{
+    Vector res;
+
+    res.x = v1.x;
+    res.y = v1.y;
+    res.z = v1.z;
+
+    return res;
+}*/

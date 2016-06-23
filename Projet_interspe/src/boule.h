@@ -17,9 +17,10 @@ private:
     Point center;
     double radius;
     Animation anim;
-    double angle, puissance; //Puissance à laquelle le joueur lance la balle
+    double angle, puissance; // Puissance à laquelle le joueur lance la balle
     GLuint texture = loadTexture("models/Ball_15.jpg" );
-    bool touche; //Vérifie si la balle touche le sol
+    bool touche; // Vérifie si la balle touche la cible
+    bool toucheSol; // Verifie sir la balle touche le sol
 
 public:
     Boule(Point c = Point(), double r = 1.0);

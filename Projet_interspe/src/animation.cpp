@@ -29,7 +29,7 @@ void Animation::integration_acc(double dt)
 
 void Animation::integration_vit(double dt)
 {
-    integration_acc(dt);
+    //integration_acc(dt);
 
     pos.x += spd.x*dt;
     pos.y += spd.y*dt;
@@ -39,7 +39,8 @@ void Animation::integration_vit(double dt)
 
 void Animation::vit_collision(double dt, Vector N)
 {
-    spd = -2*(spd*N)*N-spd;
+    //spd = -2*(spd*N)*N-spd;
+    spd.z = -spd.z;
 }
 
 
