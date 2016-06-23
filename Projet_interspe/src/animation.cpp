@@ -39,8 +39,15 @@ void Animation::integration_vit(double dt)
 
 void Animation::vit_collision(double dt, Vector N)
 {
-    //spd = -2*(spd*N)*N-spd;
-    spd.z = -spd.z;
+    spd = -(2*(spd*N)*N-spd);
+    //spd.z = -spd.z;
+}
+
+void Animation::touche_sol() {
+
+    spd.y = 0;
+    spd.x = spd.x*0.8;
+    spd.z = spd.z*0.8;
 }
 
 

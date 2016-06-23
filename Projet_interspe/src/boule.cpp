@@ -40,8 +40,12 @@ void Boule::updateForm(double delta_t) {
 void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
 
     if(toucheSol){
+        anim.touche_sol();
+        anim.integration_vit(delta_t);
+        center = anim.getPos();
         center.y = 0.5;
     }
+
     else if(center.y > 0.5 && !touche){
 
         for (int i = 0; i < nb_cibles; i++) {
@@ -49,7 +53,6 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
             Vector N = check_Impact_cible(cibles[i]);
 
             if (touche) {
-                center.x += 15;
                 anim.vit_collision(delta_t, N);
             }
         }
@@ -66,7 +69,8 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
         angle += 30;
     }
     else{
-        touche = true;
+        toucheSol = true;
+        center.y = 0.5;
     }
 }
 

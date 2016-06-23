@@ -46,6 +46,7 @@ public:
     void integration_acc(double dt);
     void integration_vit(double dt);
     void vit_collision(double dt, Vector N);
+    void touche_sol();
 };
 
 

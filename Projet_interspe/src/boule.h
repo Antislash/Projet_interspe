@@ -28,6 +28,7 @@ public:
     void setCenter(Point c) {center = c;}
     void setAnimation(Animation animation) {anim = animation;}
     void setAngle(double a){angle =a;}
+    void setToucheSol (bool _toucheSol) {toucheSol = _toucheSol;}
     void render();
     void updateForm(double delta_t);
     void updateForm(double delta_t, Cible* cibles, int nb_cibles);

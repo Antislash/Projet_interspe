@@ -263,6 +263,7 @@ void initScene (Boule &ballon, Fleche &fleche) {
         ballon.setCenter(Point(0,1,-DISTANCE_SKYBOX + 4));
         gluLookAt(0, 2,-DISTANCE_SKYBOX + 2, cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
         ballon.setAngle(0);
+        ballon.setToucheSol(false);
 }
 
 /***************************************************************************/
