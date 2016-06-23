@@ -159,61 +159,41 @@ void Cible::render(){
 
     // Face arrière
     glBegin(GL_QUADS);
-        //glTexCoord2d(1,1);
         glVertex3d(-taille,taille,taille+1);
-        //glTexCoord2d(0,1);
         glVertex3d(taille,taille,taille+1);
-        //glTexCoord2d(0,0);
         glVertex3d(taille,-taille,taille+1);
-        //glTexCoord2d(1,0);
         glVertex3d(-taille,-taille,taille+1);
     glEnd();
 
     // Face gauche
     glBegin(GL_QUADS);
-        //glTexCoord2d(1,1);
         glVertex3d(taille,taille,taille);
-        //glTexCoord2d(0,1);
         glVertex3d(taille,taille,taille+1);
-        //glTexCoord2d(0,0);
         glVertex3d(taille,-taille,taille+1);
-        //glTexCoord2d(1,0);
         glVertex3d(taille,-taille,taille);
     glEnd();
 
     // Face droite
     glBegin(GL_QUADS);
-        //glTexCoord2d(1,1);
         glVertex3d(-taille,taille,taille);
-        //glTexCoord2d(0,1);
         glVertex3d(-taille,taille,taille+1);
-        //glTexCoord2d(0,0);
         glVertex3d(-taille,-taille,taille+1);
-        //glTexCoord2d(1,0);
         glVertex3d(-taille,-taille,taille);
     glEnd();
 
     // Face haute
     glBegin(GL_QUADS);
-        //glTexCoord2d(1,1);
         glVertex3d(taille,taille,taille);
-        //glTexCoord2d(0,1);
         glVertex3d(taille,taille,taille+1);
-        //glTexCoord2d(0,0);
         glVertex3d(-taille,taille,taille+1);
-        //glTexCoord2d(1,0);
         glVertex3d(-taille,taille,taille);
     glEnd();
 
     // Face basse
     glBegin(GL_QUADS);
-        //glTexCoord2d(1,1);
         glVertex3d(taille,-taille,taille);
-        //glTexCoord2d(0,1);
         glVertex3d(taille,-taille,taille+1);
-        //glTexCoord2d(0,0);
         glVertex3d(-taille,-taille,taille+1);
-        //glTexCoord2d(1,0);
         glVertex3d(-taille,-taille,taille);
     glEnd();
 

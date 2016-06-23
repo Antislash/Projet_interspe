@@ -20,6 +20,7 @@ Boule::Boule(Point c, double r)
     puissance = 0;
     touche = false;
     texture = loadTexture("models/Ball/Ball_base.jpg" );
+    toucheSol = false;
 }
 
 void Boule::updateForm(double delta_t) {
@@ -60,6 +61,7 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
         anim.integration_vit(delta_t);
 
         center = anim.getPos();
+
         angle += 30;
     }
     else{
@@ -87,6 +89,7 @@ void Boule::render()
     gluDeleteQuadric(quadric);
     glDisable(GL_TEXTURE_2D);
 
+    //Pour dessinner la jauge de puissance
     if( puissance != 0)
     {
         glColor3f(0,1,0);
