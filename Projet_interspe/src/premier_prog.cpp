@@ -130,8 +130,7 @@ bool initGL()
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     // Fix aspect ratio and depth clipping planes
-    gluPerspective(40.0, (GLdouble)SCREEN_WIDTH/SCREEN_HEIGHT, 1.0, 100.0);
-
+    gluPerspective(40.0, (GLdouble)SCREEN_WIDTH/SCREEN_HEIGHT, 1.0, 300.0);
 
     // Initialize Modelview Matrix
     glMatrixMode(GL_MODELVIEW);
