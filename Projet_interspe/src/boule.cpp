@@ -65,10 +65,7 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
 
         center = anim.getPos();
 
-        if(!inversementRot)
-            angle += 30;
-        else
-            angle -= 30;
+        inversementRot ? angle -= 10 : angle += 10;
     }
     else{
         toucheSol = true;
