@@ -344,7 +344,7 @@ int main(int argc, char* args[])
         bool appuiPuissance = false;
         double puissance = 0;
 
-        double milli = 3500;
+        double milli = 4000;
         double dt; // Delta_t
         // While application is running
         while(!quit)
