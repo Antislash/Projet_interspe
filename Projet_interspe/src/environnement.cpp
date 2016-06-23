@@ -150,7 +150,13 @@ void Cible::render(){
     glEnable(GL_TEXTURE_2D);
 
 //    Face pour le haut
-    glBindTexture(GL_TEXTURE_2D, texture);
+    if( touche){
+        glBindTexture(GL_TEXTURE_2D, texture2);
+    }
+    else{
+        glBindTexture(GL_TEXTURE_2D, texture);
+    }
+
     glColor3f(1,1,1);
     glTranslated(center.x,center.y,center.z);
     // Face avant

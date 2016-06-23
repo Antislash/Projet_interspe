@@ -53,6 +53,7 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
             Vector N = check_Impact_cible(cibles[i]);
 
             if (touche) {
+                cibles[i].setTouche(true);
                 anim.vit_collision(delta_t, N);
             }
         }
@@ -97,11 +98,11 @@ void Boule::render()
 
     if( puissance != 0)
     {
-        glColor3f(1,0,0);
+        glColor3f(0,1,0);
         glBegin(GL_QUADS);
         glVertex3d(-0.5,0,0);
         glVertex3d(-0.6,0,0);
-        glColor3f(0,1,0);
+        glColor3f(1,0,0);
         glVertex3d(-0.6,puissance/50,0);
         glVertex3d(-0.5,puissance/50,0);
         glEnd();

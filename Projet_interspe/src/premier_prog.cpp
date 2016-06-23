@@ -53,6 +53,7 @@ void close(SDL_Window** window);
 
 double cameraLookY = 0;
 double cameraLookX = 0;
+double cameraDeplaceX = 0;
 double positionX = 0;
 double positionY = 0;
 double positionZ = 0;
@@ -206,7 +207,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon, Fleche fleche)
         // Set the camera position and parameters
         //gluLookAt(2,4,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
         //Placement, eye, up
-        gluLookAt(0, 2,-DISTANCE_SKYBOX + 2, cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
+        gluLookAt(0+ cameraDeplaceX, 2,-DISTANCE_SKYBOX + 2 , cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
     }
 
 
@@ -343,6 +344,9 @@ int main(int argc, char* args[])
         //Sert à savoir si le joueur donne une puissance à la balle
         bool appuiPuissance = false;
         double puissance = 0;
+
+        double milli = 2000;
+        double dt; // Delta_t
         // While application is running
         while(!quit)
         {
@@ -363,6 +367,7 @@ int main(int argc, char* args[])
                 case SDL_KEYUP:
                     switch(key_pressed)
                     {
+                        //Quand le joueur lache la barre d'espace
                         case SDLK_SPACE:
                             if(!lancer){
                                 ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(-fleche.getAngleY(),80-fleche.getAngleX(),puissance),Point(0,1,-DISTANCE_SKYBOX + 7)));
@@ -387,10 +392,13 @@ int main(int argc, char* args[])
                             quit = true;
                             break;
                         case SDLK_SPACE:
+
+                            //Quand le joueur appuie sur espace
                             if(!lancer && !appuiPuissance){
                                 appuiPuissance = true;
                                 time_puissance = current_time;
                             }
+                            //Tant que le joueur reste appuyé sur la barre d'espace
                             else if(!lancer && appuiPuissance && (current_time - time_puissance)/50 <= 55 ){
                                 puissance = (current_time - time_puissance)/50;
                                 ballon.setPuissance(puissance);
@@ -411,9 +419,17 @@ int main(int argc, char* args[])
                             break;
                         case SDLK_q:
                             fleche.setAngleY(fleche.getAngleY()-0.5);
+
+                            //Permet de suivre la trajectoire de la fleche
+                            cameraLookX += 0.05;
+                            cameraDeplaceX -= 0.05;
                             break;
                         case SDLK_d:
                             fleche.setAngleY(fleche.getAngleY()+0.5);
+
+                            //Permet de suivre la trajectoire de la fleche
+                            cameraLookX -= 0.05;
+                            cameraDeplaceX += 0.05;
                             break;
                         case SDLK_z:
                             if (fleche.getAngleX() - 0.5>0) {
@@ -434,6 +450,15 @@ int main(int argc, char* args[])
                             ballon.setPuissance(0);
                             ballon.setTouche(false); // Sert à dire que le ballon n'a toujours pas touché le sol
 
+                            //On réinitialise l'état des cible
+                            cible1.setTouche(false);
+                            cible2.setTouche(false);
+                            cible3.setTouche(false);
+
+                            //On réinitialisa la position de la caméra
+                            cameraLookX = 0;
+                            cameraDeplaceX = 0;
+
                             //On replace les élément à leur départ
                             initScene(ballon, fleche);
                             break;
@@ -449,8 +474,7 @@ int main(int argc, char* args[])
 
             // Update the scene
             current_time = SDL_GetTicks(); // get the elapsed time from SDL initialization (ms)
-            double milli = 1000;
-            double dt = (current_time - previous_time)/milli;
+            dt = (current_time - previous_time)/milli;
 
             if ((current_time - previous_time) > ANIM_DELAY)
             {

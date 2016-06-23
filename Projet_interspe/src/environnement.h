@@ -72,13 +72,16 @@ class Cible : public Form
 private:
     float taille;
     Point center;
-    GLuint texture = loadTexture("models/cible.jpg");
+    GLuint texture = loadTexture("models/cible.jpg"); // Texture lorsque la cible n'est pas touché
+    GLuint texture2 = loadTexture("models/cible_touche.png"); // Quand la cible est touché
+    bool touche;
 
 public:
-    Cible(Point p = Point(), float t = 1.00){center = p; taille = t;}
+    Cible(Point p = Point(), float t = 1.00){center = p; taille = t; touche = false;}
     void render();
     void updateForm(double delta_t);
     Point getCenter(){return center;}
     float getTaille() {return taille;}
+    void setTouche(bool t){touche = t;}
 };
 #endif // ENVIRONNEMENT_H_INCLUDED
