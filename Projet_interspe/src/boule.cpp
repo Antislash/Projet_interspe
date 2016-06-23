@@ -11,7 +11,7 @@
 
 using namespace std;
 
-
+//Constructeur
 Boule::Boule(Point c, double r)
 {
     center = c;
@@ -19,24 +19,14 @@ Boule::Boule(Point c, double r)
     angle = 0;
     puissance = 0;
     touche = false;
+    texture = loadTexture("models/Ball/Ball_base.jpg" );
 }
 
 void Boule::updateForm(double delta_t) {
 
-    if(touche){
-        center.y = 0.5;
-    }
-    else if(center.y > 0.5 && !touche){
-        anim.integration_vit(delta_t);
-        center = anim.getPos();
-        angle += 30;
-    }
-    else{
-        touche = true;
-    }
 }
 
-
+//Déplacement de la boule + Vérification des impacts
 void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
 
     if(toucheSol){
@@ -79,22 +69,20 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
     }
 }
 
+//Rendu de la boule
 void Boule::render()
 {
 
-//    glTranslatef(center.x,center.y,center.z);
-//    glScaled(0.5,0.5,0.5);
-//    ballon->draw_model();
-
     glEnable(GL_TEXTURE_2D);
+
     GLUquadricObj *quadric = gluNewQuadric();
     glColor3f(1,1,1);
     glTranslatef(center.x,center.y,center.z);
-    //cout << "angle = " << angle << endl;
+
     glRotated(angle, 1,0,0);
     gluQuadricTexture(quadric, GL_TRUE);
 
-    glBindTexture(GL_TEXTURE_2D, loadTexture("models/Ball_15.jpg" ));
+    glBindTexture(GL_TEXTURE_2D, texture);
     gluSphere(quadric, radius, 32, 32);
 
     gluDeleteQuadric(quadric);
@@ -114,6 +102,7 @@ void Boule::render()
 
 }
 
+//Calcul si il y a impact avec une cible
 Vector Boule::check_Impact_cible(Cible cible)
 {
 
@@ -149,6 +138,7 @@ Vector Boule::check_Impact_cible(Cible cible)
     return N;
 }
 
+//Calcul si il y a impact avec le mur du fond
 Vector Boule::check_Impact_mur(Cible cible)
 {
 
@@ -183,4 +173,20 @@ Vector Boule::check_Impact_mur(Cible cible)
 
     touche = false;
     return N;
+}
+
+//Permet de changer l'apparence de la boule
+void Boule::setTexture(int text){
+    switch(text){
+        case 1 : texture = loadTexture("models/Ball/Ball_15.jpg");
+            break;
+        case 2 : texture = loadTexture("models/Ball/Ball_boulet_canon.jpg");
+            break;
+        case 3 : texture = loadTexture("models/Ball/Ball_base.jpg");
+            break;
+        case 4 : texture = loadTexture("models/Ball/ball_colors.jpg");
+            break;
+        case 5 : texture = loadTexture("models/Ball/ball_fractal.jpg");
+            break;
+    }
 }

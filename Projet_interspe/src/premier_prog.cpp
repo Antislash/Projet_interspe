@@ -209,28 +209,6 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon, Fleche fleche)
         gluLookAt(0+ cameraDeplaceX, 2,-DISTANCE_SKYBOX + 2 , cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
     }
 
-
-
-    // X, Y and Z axis
-    /*glPushMatrix(); // Preserve the camera viewing point for further forms
-    // Render the coordinates system
-
-    //glTranslated(0,1,0);
-    glBegin(GL_LINES);
-    {
-        glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex3i(0, 0, 0);
-        glVertex3i(1, 0, 0);
-        glColor3f(0.0f, 1.0f, 0.0f);
-        glVertex3i(0, 0, 0);
-        glVertex3i(0, 1, 0);
-        glColor3f(0.0f, 0.0f, 1.0f);
-        glVertex3i(0, 0, 0);
-        glVertex3i(0, 0, 1);
-    }
-    glEnd();
-    glPopMatrix();*/
-
     // Render du ballon
     glPushMatrix();
     ballon.render();
@@ -317,20 +295,21 @@ int main(int argc, char* args[])
         Boule ballon(Point(0,1,-DISTANCE_SKYBOX + 4),0.5);
         //ballon.setAnimation(Animation(0.0,0.0,Vector(0,-9.8,0),Vector(0,15,25),Point(0,1,-DISTANCE_SKYBOX + 7)));
         Fleche fleche(Point(0,0.5,-DISTANCE_SKYBOX + 25.5));
+
+        //On donné des angles par défault à la fleche de visé
         fleche.setAngleX(75);
         fleche.setAngleY(0);
+
         Ciel ciel(Point (0,0,0));
         Cible cible1(Point(0,4,DISTANCE_SKYBOX/2 -7),4);
         Cible cible2(Point(-15,4,DISTANCE_SKYBOX/2 -11),4);
         Cible cible3(Point(15,4,DISTANCE_SKYBOX/2 -3),4);
-        //Sol terrain(Point(0,-1,0));
-        //MeshObj *fleche=new MeshObj("models/arrow/arrow.obj");
 
         cibles[0] = &cible1;
         cibles[1] = &cible2;
         cibles[2] = &cible3;
 
-        //forms_list[5] = &ballon;
+        //On enregistre les différentes formes
         forms_list[3] = &fleche;
         forms_list[1] = &cible1;
         forms_list[2] = &ciel;
@@ -440,6 +419,8 @@ int main(int argc, char* args[])
                                fleche.setAngleX(fleche.getAngleX()+0.5);
                             }
                             break;
+
+                            //R permet de reset
                         case SDLK_r:
                             //On autorise un nouveau lancer
                             lancer = false;
@@ -462,6 +443,22 @@ int main(int argc, char* args[])
                             initScene(ballon, fleche);
                             break;
 
+                            //On peut choisir différentes texture pour la balles
+                            case SDLK_1: ballon.setTexture(1);
+                                break;
+
+                            case SDLK_2 : ballon.setTexture(2);
+                                break;
+
+                            case SDLK_3 : ballon.setTexture(3);
+                                break;
+
+                            case SDLK_4 : ballon.setTexture(4);
+                                break;
+
+                            case SDLK_5 : ballon.setTexture(5);
+                                break;
+
                         default:
                             break;
                     }
@@ -477,7 +474,6 @@ int main(int argc, char* args[])
 
             if ((current_time - previous_time) > ANIM_DELAY)
             {
-                //cout << "temps elapse :" << dt << endl;
                 previous_time = current_time;
                 update(forms_list, dt, cibles, &ballon);
             }

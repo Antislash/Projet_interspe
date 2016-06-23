@@ -10,7 +10,7 @@
 
 
 
-// A particular Form
+// Class pour la modélisation de la boule
 class Boule : public Form
 {
 private:
@@ -18,7 +18,7 @@ private:
     double radius;
     Animation anim;
     double angle, puissance; // Puissance à laquelle le joueur lance la balle
-    GLuint texture = loadTexture("models/Ball_15.jpg" );
+    GLuint texture;
     bool touche; // Vérifie si la balle touche la cible
     bool toucheSol; // Verifie sir la balle touche le sol
 
@@ -35,6 +35,7 @@ public:
     double getPuissance(){return puissance;}
     void setPuissance(double p){puissance = p;}
     void setTouche(bool t){touche = t;}
+    void setTexture(int text);
     Vector check_Impact_cible(Cible cible);
     Vector check_Impact_mur(Cible cible);
 };

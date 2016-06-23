@@ -41,6 +41,8 @@ void Ciel::render(){
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
+
+
 //    Face pour le haut
     glBindTexture(GL_TEXTURE_2D, texture1);
     glColor3f(1,1,1);
@@ -133,7 +135,7 @@ void Cible::render(){
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
 
-//    Face pour le haut
+    //Choix du rendu de la cible suivant si elle est touché ou non
     if( touche){
         glBindTexture(GL_TEXTURE_2D, texture2);
     }
