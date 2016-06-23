@@ -384,6 +384,7 @@ int main(int argc, char* args[])
                             }
                             break;
 
+                        //Possibilité de déplacer l'angle de vue de la caméra lors de la phase de préparation au lancé
                         case SDLK_UP:
                             cameraLookY += 0.2;
                             break;
