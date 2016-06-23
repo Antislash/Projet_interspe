@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5102715F1D18282900B55CAB /* animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519D900A1D181670009D0CB5 /* animation.cpp */; };
+		516AB16A1D1BE72000E4D263 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 516AB1691D1BE72000E4D263 /* SDL2_image.framework */; };
 		519D901C1D181670009D0CB5 /* boule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519D900B1D181670009D0CB5 /* boule.cpp */; };
 		519D901D1D181670009D0CB5 /* environnement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519D900D1D181670009D0CB5 /* environnement.cpp */; };
 		519D901E1D181670009D0CB5 /* premier_prog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519D900F1D181670009D0CB5 /* premier_prog.cpp */; };
@@ -35,6 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		516AB1691D1BE72000E4D263 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
 		519D90001D18164A009D0CB5 /* Projet_interspe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Projet_interspe; sourceTree = BUILT_PRODUCTS_DIR; };
 		519D900A1D181670009D0CB5 /* animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = animation.cpp; path = ../src/animation.cpp; sourceTree = "<group>"; };
 		519D900B1D181670009D0CB5 /* boule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = boule.cpp; path = ../src/boule.cpp; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516AB16A1D1BE72000E4D263 /* SDL2_image.framework in Frameworks */,
 				519D902D1D181E59009D0CB5 /* OpenGL.framework in Frameworks */,
 				519D902B1D181E50009D0CB5 /* GLUT.framework in Frameworks */,
 				519D90291D181E47009D0CB5 /* SDL2.framework in Frameworks */,
@@ -78,28 +81,29 @@
 			isa = PBXGroup;
 			children = (
 				519D900A1D181670009D0CB5 /* animation.cpp */,
-				519D90131D181670009D0CB5 /* animation.h */,
 				519D900B1D181670009D0CB5 /* boule.cpp */,
-				519D900C1D181670009D0CB5 /* boule.h */,
-				519D90241D181A48009D0CB5 /* Cocoa.framework */,
 				519D900D1D181670009D0CB5 /* environnement.cpp */,
-				519D900E1D181670009D0CB5 /* environnement.h */,
 				519D90141D181670009D0CB5 /* forms.cpp */,
-				519D90151D181670009D0CB5 /* forms.h */,
 				519D90161D181670009D0CB5 /* geometry.cpp */,
-				519D90171D181670009D0CB5 /* geometry.h */,
-				519D902A1D181E50009D0CB5 /* GLUT.framework */,
 				519D90181D181670009D0CB5 /* OBJlib.cpp */,
-				519D90191D181670009D0CB5 /* OBJlib.h */,
-				519D902C1D181E59009D0CB5 /* OpenGL.framework */,
 				519D900F1D181670009D0CB5 /* premier_prog.cpp */,
+				519D90101D181670009D0CB5 /* sdlglutils.cpp */,
+				519D90111D181670009D0CB5 /* skybox.cpp */,
+				519D90241D181A48009D0CB5 /* Cocoa.framework */,
+				519D902A1D181E50009D0CB5 /* GLUT.framework */,
+				519D902C1D181E59009D0CB5 /* OpenGL.framework */,
+				516AB1691D1BE72000E4D263 /* SDL2_image.framework */,
+				519D90281D181E47009D0CB5 /* SDL2.framework */,
+				519D90131D181670009D0CB5 /* animation.h */,
+				519D900C1D181670009D0CB5 /* boule.h */,
+				519D900E1D181670009D0CB5 /* environnement.h */,
+				519D90151D181670009D0CB5 /* forms.h */,
+				519D90171D181670009D0CB5 /* geometry.h */,
+				519D90191D181670009D0CB5 /* OBJlib.h */,
+				519D901A1D181670009D0CB5 /* sdlglutils.h */,
+				519D90121D181670009D0CB5 /* skybox.h */,
 				519D90011D18164A009D0CB5 /* Products */,
 				519D90021D18164A009D0CB5 /* Projet_interspe */,
-				519D90281D181E47009D0CB5 /* SDL2.framework */,
-				519D90101D181670009D0CB5 /* sdlglutils.cpp */,
-				519D901A1D181670009D0CB5 /* sdlglutils.h */,
-				519D90111D181670009D0CB5 /* skybox.cpp */,
-				519D90121D181670009D0CB5 /* skybox.h */,
 			);
 			sourceTree = "<group>";
 		};
