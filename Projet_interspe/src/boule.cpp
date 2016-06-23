@@ -6,6 +6,7 @@
 #include "boule.h"
 #include "environnement.h"
 #include "animation.h"
+#include "geometry.h"
 #include <iostream>
 
 using namespace std;
@@ -17,7 +18,7 @@ Boule::Boule(Point c, double r)
     radius = r;
     angle = 0;
     puissance = 0;
-    touche = 0;
+    touche = false;
 }
 
 void Boule::updateForm(double delta_t) {
@@ -33,6 +34,42 @@ void Boule::updateForm(double delta_t) {
     else{
         touche = true;
     }
+}
+
+
+void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
+
+    for (int i = 0; i < nb_cibles; i++) {
+
+        //Vector N = check_Impact_cible(cibles[i]);
+
+        if (touche) {
+            cout << "touche" << endl;
+            //anim.vit_collision(delta_t, N);
+        }
+    }
+
+    if (!touche)
+    {
+        //cout << "passe2" << endl;
+        anim.integration_acc(delta_t);
+    }
+
+    anim.integration_vit(delta_t);
+
+    center = anim.getPos();
+
+    /*if(touche){
+        center.y = 0.5;
+    }
+    else if(center.y > 0.5 && !touche){
+        anim.integration_vit(delta_t);
+        center = anim.getPos();
+        angle += 30;
+    }
+    else{
+        touche = true;
+    }*/
 
 }
 
@@ -69,5 +106,40 @@ void Boule::render()
         glEnd();
     }
 
+}
+
+Vector Boule::check_Impact_cible(Cible cible)
+{
+
+    Vector V1 = (cible.getCenter().x - cible.getTaille() +1  - cible.getCenter().x - cible.getTaille(), 0.0, 0.0);
+    Vector V2 = (0.0, cible.getCenter().y - cible.getTaille() +1  - cible.getCenter().y - cible.getTaille(), 0.0);
+
+    Vector N = V1^V2;
+
+    N = N*(1/N.norm());
+
+    Point P = (-60.0, 0.0, -60.0);
+    Point C = center;
+    Vector PC = Vector(P,C);
+
+    Vector Vect_Impact = -(N*PC)*N;
+
+    // Calcul de la coordonnée de l'impact
+
+    Point Impact;
+
+    Impact.x = center.x+Vect_Impact.x;
+    Impact.y = center.y+Vect_Impact.y;
+    Impact.z = center.z+Vect_Impact.z;
+
+    if ((Vect_Impact.norm()<=radius)&&(Impact.x>cible.getCenter().x-cible.getTaille())&&(Impact.x<cible.getCenter().x+cible.getTaille())&&(Impact.y>cible.getCenter().y-cible.getTaille())&&(Impact.y<cible.getCenter().y+cible.getTaille()))
+
+    {
+        touche = true;
+        return N;
+    }
+
+    touche = false;
+    return N;
 }
 

@@ -28,6 +28,8 @@ bool lancer = false;
 // Max number of forms : static allocation
 const int MAX_FORMS_NUMBER = 10;
 
+const int NB_CIBLES = 3;
+
 // Animation actualization delay (in ms) => 100 updates per second
 const Uint32 ANIM_DELAY = 10;
 
@@ -151,10 +153,14 @@ bool initGL()
     return success;
 }
 
-void update(Form* formlist[MAX_FORMS_NUMBER], double elapseTime)
+void update(Form* formlist[MAX_FORMS_NUMBER], double elapseTime, Cible* cibles[NB_CIBLES], Boule ballon)
 {
     // Update the list of forms
     if (lancer) {
+
+        int nb_cibles = NB_CIBLES;
+
+        ballon.updateForm(elapseTime, *cibles, nb_cibles);
 
         unsigned short i = 0;
         while(formlist[i] != NULL)
@@ -227,6 +233,10 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon, Fleche fleche)
     glEnd();
     glPopMatrix();*/
 
+    // Render du ballon
+    glPushMatrix();
+    ballon.render();
+    glPopMatrix();
     // Render the list of forms
     unsigned short i = 0;
     while(formlist[i] != NULL)
@@ -288,12 +298,20 @@ int main(int argc, char* args[])
 
         // The forms to render
         Form* forms_list[MAX_FORMS_NUMBER];
+        Cible* cibles[NB_CIBLES];
         unsigned short number_of_forms = 0, i;
         forms_list[number_of_forms] = NULL; // Do nothing but remove a warning
         for (i=0; i<MAX_FORMS_NUMBER; i++)
         {
             forms_list[i] = NULL;
         }
+        unsigned short number_of_cibles = 0, j;
+        forms_list[number_of_cibles] = NULL; // Do nothing but remove a warning
+        for (j=0; j<NB_CIBLES; j++)
+        {
+            cibles[j] = NULL;
+        }
+
         // Create here specific forms and add them to the list...
         // Don't forget to update the actual number_of_forms !
 
@@ -309,13 +327,16 @@ int main(int argc, char* args[])
         //Sol terrain(Point(0,-1,0));
         //MeshObj *fleche=new MeshObj("models/arrow/arrow.obj");
 
+        cibles[0] = &cible1;
+        cibles[1] = &cible2;
+        cibles[2] = &cible3;
 
-        forms_list[0] = &ballon;
+        //forms_list[5] = &ballon;
         forms_list[3] = &fleche;
         forms_list[1] = &cible1;
         forms_list[2] = &ciel;
         forms_list[4] = &cible2;
-        forms_list[5] = &cible3;
+        forms_list[0] = &cible3;
 
         // Get first "current time"
         previous_time = SDL_GetTicks();
@@ -436,7 +457,7 @@ int main(int argc, char* args[])
             {
                 //cout << "temps elapse :" << dt << endl;
                 previous_time = current_time;
-                update(forms_list, dt);
+                update(forms_list, dt, cibles, ballon);
             }
 
             // Render the scene

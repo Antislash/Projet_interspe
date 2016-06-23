@@ -45,6 +45,7 @@ public:
     void setPos(Point pt) {pos = pt;}
     void integration_acc(double dt);
     void integration_vit(double dt);
+    void vit_collision(double dt, Vector N);
 };
 
 

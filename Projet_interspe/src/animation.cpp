@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+#include "geometry.h"
 
 using namespace std;
 
@@ -34,6 +35,11 @@ void Animation::integration_vit(double dt)
     pos.y += spd.y*dt;
     pos.z += spd.z*dt;
 
+}
+
+void Animation::vit_collision(double dt, Vector N)
+{
+    spd = -2*(spd*N)*N-spd;
 }
 
 

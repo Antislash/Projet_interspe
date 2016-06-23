@@ -6,6 +6,7 @@
 #include <string.h>
 #include "OBJlib.h"
 #include "forms.h"
+#include "environnement.h"
 
 
 
@@ -28,9 +29,11 @@ public:
     void setAngle(double a){angle =a;}
     void render();
     void updateForm(double delta_t);
+    void updateForm(double delta_t, Cible* cibles, int nb_cibles);
     double getPuissance(){return puissance;}
     void setPuissance(double p){puissance = p;}
     void setTouche(bool t){touche = t;}
+    Vector check_Impact_cible(Cible cible);
 };
 
 

@@ -3,6 +3,7 @@
 
 #include "OBJlib.h"
 #include "forms.h"
+#include "animation.h"
 
 const int DISTANCE_SKYBOX = 45;
 
@@ -77,5 +78,7 @@ public:
     Cible(Point p = Point(), float t = 1.00){center = p; taille = t;}
     void render();
     void updateForm(double delta_t);
+    Point getCenter(){return center;}
+    float getTaille() {return taille;}
 };
 #endif // ENVIRONNEMENT_H_INCLUDED
