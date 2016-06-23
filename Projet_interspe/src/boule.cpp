@@ -54,7 +54,6 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
 
         if (!touche)
         {
-            //cout << "passe2" << endl;
             anim.integration_acc(delta_t);
         }
 
