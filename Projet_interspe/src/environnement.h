@@ -52,12 +52,12 @@ class Ciel : public Form
 
 private:
     Point center;
-    GLuint texture1 = loadTexture("models/skybox4/top.jpg" );
-    GLuint texture2 = loadTexture("models/skybox4/back.jpg");
-    GLuint texture3 = loadTexture("models/skybox4/front.jpg" );
-    GLuint texture4 = loadTexture("models/skybox4/left.jpg");
-    GLuint texture5 = loadTexture("models/skybox4/right.jpg" );
-    GLuint texture6 = loadTexture("models/skybox4/bottom.jpg");
+    GLuint texture1 = loadTexture("models/skybox/spaceship.png" );
+    GLuint texture2 = loadTexture("models/skybox/spaceship.png");
+    GLuint texture3 = loadTexture("models/skybox/spaceship.png" );
+    GLuint texture4 = loadTexture("models/skybox/spaceship.png");
+    GLuint texture5 = loadTexture("models/skybox/spaceship.png" );
+    GLuint texture6 = loadTexture("models/skybox/spaceship.png");
 
 
 public:
