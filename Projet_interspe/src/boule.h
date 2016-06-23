@@ -21,6 +21,7 @@ private:
     GLuint texture;
     bool touche; // Vérifie si la balle touche la cible
     bool toucheSol; // Verifie sir la balle touche le sol
+    bool inversementRot;
 
 public:
     Boule(Point c = Point(), double r = 1.0);
@@ -36,6 +37,7 @@ public:
     void setPuissance(double p){puissance = p;}
     void setTouche(bool t){touche = t;}
     void setTexture(int text);
+    void setInversementRot(bool i){ inversementRot = i;}
     Vector check_Impact_cible(Cible cible);
     Vector check_Impact_mur(Cible cible);
 };

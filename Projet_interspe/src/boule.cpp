@@ -21,6 +21,7 @@ Boule::Boule(Point c, double r)
     touche = false;
     texture = loadTexture("models/Ball/Ball_base.jpg" );
     toucheSol = false;
+    inversementRot = false;
 }
 
 void Boule::updateForm(double delta_t) {
@@ -42,6 +43,7 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
         Vector t = check_Impact_mur(cibles[1]);
         if (touche) {
             anim.vit_collision(delta_t, t);
+            inversementRot = true;
         }
         for (int i = 0; i < nb_cibles; i++) {
 
@@ -50,6 +52,7 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
             if (touche) {
                 cibles[i].setTouche(true);
                 anim.vit_collision(delta_t, N);
+                inversementRot = true;
             }
         }
 
@@ -62,7 +65,10 @@ void Boule::updateForm(double delta_t, Cible* cibles, int nb_cibles) {
 
         center = anim.getPos();
 
-        angle += 30;
+        if(!inversementRot)
+            angle += 30;
+        else
+            angle -= 30;
     }
     else{
         toucheSol = true;

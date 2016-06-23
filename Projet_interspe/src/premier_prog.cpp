@@ -51,12 +51,10 @@ const double ANGLE = 45.0;
 // Frees media and shuts down SDL
 void close(SDL_Window** window);
 
-double cameraLookY = 0;
+//Variable utilent
+double cameraLookY = 0;//Permet de changer l'endroit où regarde la caméra
 double cameraLookX = 0;
-double cameraDeplaceX = 0;
-double positionX = 0;
-double positionY = 0;
-double positionZ = 0;
+double cameraDeplaceX = 0; //Déplace la caméra lors de la visé
 
 
 /***************************************************************************/
@@ -179,9 +177,6 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon, Fleche fleche)
     glLoadIdentity();
 
     if(lancer){
-//        pos += 0.01;
-//        gluLookAt(2*SIZE_PLAN_WIDTH,2,0, 0,2,SIZE_PLAN_LENGTH, 0.0,1.0,0.0);
-        //gluLookAt(DISTANCE_SKYBOX/2, 2,0, ballon.getCenter().x, ballon.getCenter().y + 2, ballon.getCenter().z, 0.0,1.0,0.0);
         if(ballon.getCenter().z<10 && fleche.getAngleY()>0) {
 
             gluLookAt(DISTANCE_SKYBOX - 1, 2,0, 0, ballon.getCenter().y, ballon.getCenter().z, 0.0,1.0,0.0);
@@ -202,10 +197,7 @@ const void render(Form* formlist[MAX_FORMS_NUMBER], Boule ballon, Fleche fleche)
         //gluLookAt(0, 2,-DISTANCE_SKYBOX + 2, cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
     }
     else{
-            pos += 0.5;
         // Set the camera position and parameters
-        //gluLookAt(2,4,10, 0.0,0.0,-5.0, 0.0,1.0,0.0);
-        //Placement, eye, up
         gluLookAt(0+ cameraDeplaceX, 2,-DISTANCE_SKYBOX + 2 , cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
     }
 
@@ -241,7 +233,13 @@ void initScene (Boule &ballon, Fleche &fleche) {
         ballon.setCenter(Point(0,1,-DISTANCE_SKYBOX + 4));
         gluLookAt(0, 2,-DISTANCE_SKYBOX + 2, cameraLookX,cameraLookY+1, -DISTANCE_SKYBOX + 7, 0.0,1.0,0.0);
         ballon.setAngle(0);
-        ballon.setToucheSol(false);
+
+        ballon.setToucheSol(false); // Le ballon n'a pas touché le sol
+        ballon.setInversementRot(false); //Le ballon tournera dans le sens de lancé normal
+
+        ballon.setPuissance(0);
+        ballon.setTouche(false); // Sert à dire que le ballon n'a rien touché
+
 }
 
 /***************************************************************************/
@@ -300,7 +298,10 @@ int main(int argc, char* args[])
         fleche.setAngleX(75);
         fleche.setAngleY(0);
 
+        // Skybox => nommé Ciel, car ne marche pas avec le nom Skybox
         Ciel ciel(Point (0,0,0));
+
+
         Cible cible1(Point(0,4,DISTANCE_SKYBOX/2 -7),4);
         Cible cible2(Point(-15,4,DISTANCE_SKYBOX/2 -11),4);
         Cible cible3(Point(15,4,DISTANCE_SKYBOX/2 -3),4);
@@ -427,8 +428,6 @@ int main(int argc, char* args[])
 
                             //On remet la puissance de la balle par défaut
                             appuiPuissance = false;
-                            ballon.setPuissance(0);
-                            ballon.setTouche(false); // Sert à dire que le ballon n'a toujours pas touché le sol
 
                             //On réinitialise l'état des cible
                             cible1.setTouche(false);
